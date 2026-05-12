@@ -69,23 +69,16 @@
   <div class="container content-section">
 
     <div class="section-heading">
-      <h2>Gameplay Showcase</h2>
-      <p>
-        Overview of the gameplay systems and card mechanics developed for Dating Dungeon.
-      </p>
+      <h2>Game Trailer</h2>
     </div>
 
-    <div class="youtube-container">
-      <iframe 
-     
-      src="https://www.youtube.com/embed/87V8W0Ggoq0" 
-      title="YouTube video player" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
-    </div>
+     <div class="media-card">
+        
+          <video controls poster="Images/DatingDungeon.png">
+            <source src="Videos\Dating Dungeon _ Trailer.mp4" type="video/mp4" />
+ 
+          </video>
+        </div>
 
   </div>
 </section>
@@ -112,25 +105,7 @@
     </div>
 
   </div>
-</section>
 
-
-    <section>
-      <div class="container content-section">
-        <div class="section-heading">
-          <h2>Card Manager Demo</h2>
-         
-        </div>
-
-        <div class="media-card">
-        
-          <video controls poster="Images/DatingDungeon.png">
-            <source src="Videos\CardsDemo.mp4" type="video/mp4" />
- 
-          </video>
-        </div>
-      </div>
-    </section>
 
     <section>
       <div class="container content-section">
@@ -139,83 +114,174 @@
           <p>DeckDraw acts as the central deck manager that controls the player’s active deck during gameplay.</p>
         </div>
 
-        <div class="detail-grid">
-          <article class="detail-card">
-            <h3>1. Loading Player Class Data</h3>
-            <p>
-              When a match starts, DeckDraw reads the player’s save data to determine which character class the player selected,
-              such as Knight or Chemist. This lets the system automatically load the correct starting cards for that class.
-            </p>
-          </article>
+       <div class="deckdraw-layout">
+  <div class="detail-grid">
+    <article class="detail-card">
+      <h3>1. Loading Player Class Data</h3>
+      <p>
+        When a match starts, DeckDraw reads the player’s save data to determine which character class the player selected,
+        such as Knight or Chemist. This lets the system automatically load the correct starting cards for that class.
+      </p>
+    </article>
 
-          <article class="detail-card">
-            <h3>2. Reading ScriptableObject Card Data</h3>
-            <p>
-              Each card is defined as a ScriptableObject containing the card name, sprite, and description text. DeckDraw processes
-              these ScriptableObjects from the starting deck array to build the in-match deck.
-            </p>
-          </article>
+    <article class="detail-card">
+      <h3>2. Reading ScriptableObject Card Data</h3>
+      <p>
+        Each card is defined as a ScriptableObject containing the card name, sprite, and description text. DeckDraw processes
+        these ScriptableObjects from the starting deck array to build the in-match deck.
+      </p>
+    </article>
 
-          <article class="detail-card">
-            <h3>3. Runtime Dictionaries</h3>
-            <p>
-              To make UI lookups faster, DeckDraw stores card information in dictionaries. One dictionary maps card names to sprites,
-              while another maps card names to description text.
-            </p>
-          </article>
+    <article class="detail-card">
+      <h3>3. Runtime Dictionaries</h3>
+      <p>
+        To make UI lookups faster, DeckDraw stores card information in dictionaries. One dictionary maps card names to sprites,
+        while another maps card names to description text.
+      </p>
+    </article>
 
-          <article class="detail-card">
-            <h3>4. Random Card Drawing</h3>
-            <p>
-              At the start of each turn, DeckDraw randomly selects five cards from the deck list. These card names are then passed to
-              AssignCard, which displays the correct card sprite and description.
-            </p>
-          </article>
+    <article class="detail-card">
+      <h3>4. Random Card Drawing</h3>
+      <p>
+        At the start of each turn, DeckDraw randomly selects five cards from the deck list. These card names are then passed to
+        AssignCard, which displays the correct card sprite and description.
+      </p>
+    </article>
 
-          <article class="detail-card wide-card">
-            <h3>5. Calling Card Actions by Name</h3>
-            <p>
-              Each character class has its own action script that inherits from a shared base Cards class. AssignCard uses the card name
-              provided by DeckDraw to call the correct gameplay function through a card-action dictionary built on startup.
-            </p>
-            <p>
-              This made the system flexible because new cards could be added through data, UI information could update automatically,
-              and different classes could share or override abilities when needed.
-            </p>
-          </article>
-        </div>
+    <article class="detail-card wide-card">
+      <h3>5. Calling Card Actions by Name</h3>
+      <p>
+        Each character class has its own action script that inherits from a shared base Cards class. AssignCard uses the card name
+        provided by DeckDraw to call the correct gameplay function through a card-action dictionary built on startup.
+      </p>
+    </article>
+
+      <div class="media-card">
+        
+          <video controls poster="Images\ScreenDemoCard.png">
+            <source src="Videos\CardsDemo.mp4" type="video/mp4" />
+ 
+          </video>
+          </div>
+  </div>
+
+ 
+
+  <div class="side-screenshot-stack">
+    <figure class="gallery-card">
+      <img src="Images/DeckDrawInspector.png" alt="DeckDraw inspector screenshot">
+      <figcaption>DeckDraw Inspector View</figcaption>
+    </figure>
+
+  </div>
+</div>
       </div>
-    </section>
-
-    <section>
-      <div class="container content-section">
-        <div class="section-heading">
-          <h2>Inspector & Script Demos</h2>
-          <p>Add screenshots or videos of your Unity Inspector, DeckDraw script, and AssignCard behavior here.</p>
-        </div>
-
-        <div class="gallery-grid">
-          <figure class="gallery-card">
-            <img src="Images/DatingDungeon.png" alt="DeckDraw inspector screenshot placeholder" />
-            <figcaption>DeckDraw Inspector View</figcaption>
-          </figure>
-
-          <figure class="gallery-card">
-            <img src="Images/DatingDungeon.png" alt="Card system screenshot placeholder" />
-            <figcaption>Card Data and Runtime Setup</figcaption>
-          </figure>
-        </div>
-
-        <div class="media-card spaced-media">
+ 
+<section>
+  <div class="container content-section">
+    <div class="section-heading">
+      <h2>AssignCard Script Breakdown</h2>
+    
+    </div>
+  <div class="media-card spaced-media">
           <!-- Replace the src with your real AssignCard video file path, for example: Videos/AssignCardDemo.mp4 -->
-          <video controls poster="Images/DatingDungeon.png">
-            <source src="Videos/AssignCardDemo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
+          <video controls poster="Images\ScreenAssignDemo.png">
+            <source src="Videos\AssignCardDemo.mp4" type="video/mp4" />
+           
           </video>
         </div>
+    <div class="script-card">
+      <div class="script-header">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <strong>AssignCard.cs</strong>
       </div>
-    </section>
 
+      <div class="script-body">
+        <h3>Purpose</h3>
+        <p>
+          AssignCard controls how each card slot displays card information and connects player input to the correct gameplay function.
+        </p>
+
+        <h3>How It Works</h3>
+        <ul>
+          <li>Receives card names from DeckDraw after the deck is shuffled and cards are selected.</li>
+          <li>Uses dictionaries to match card names with sprites, descriptions, and gameplay actions.</li>
+          <li>Updates the card UI so the player sees the correct image and description.</li>
+          <li>Checks player input, energy cost, and battle state before allowing a card action to run.</li>
+          <li>Calls the correct class-specific function, such as Knight, Chemist, or Wizard card behavior.</li>
+        </ul>
+
+        <h3>Why I Built It This Way</h3>
+        <p>
+          This structure made the card system easier to expand because new cards could be added without rewriting the entire UI system.
+          It also separated card data from card behavior, making the system cleaner for designers and programmers.
+        </p>
+        <pre><code>
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using Unity.VisualScripting;
+
+// Handles the assignment and functionality of individual cards in the UI.
+// Works with DeckDraw to assign cards, trigger actions, and manage card usage.
+public class AssignCard : MonoBehaviour
+{
+    public string cardNameFromList;
+    public Button cardButton;
+    public bool cardUsed;
+    public Image cardImage;
+
+    private BattleSystem BSystem;
+    private DeckDraw cardDraw;
+    private EnergySystem energy;
+
+    public void SetupCardButton()
+    {
+        cardImage.enabled = true;
+        cardImage.sprite = cardDraw.allPossibleSprites[cardNameFromList];
+
+        cardButton.onClick.RemoveAllListeners();
+        cardButton.onClick.AddListener(OnCardClicked);
+        cardButton.interactable = true;
+    }
+
+    private void OnCardClicked()
+    {
+        switch (cardDraw.characterClass)
+        {
+            case CharacterClass.KNIGHT:
+                // Check energy, invoke matching card action,
+                // then discard and reset the card.
+                break;
+
+            case CharacterClass.CHEMIST:
+                // Run Chemist card behavior.
+                break;
+
+            case CharacterClass.WIZZARD:
+                // Run Wizard card behavior.
+                break;
+        }
+    }
+
+    public IEnumerator AssignNewCard(string newCardName)
+    {
+        yield return new WaitForSeconds(.15f);
+
+        cardNameFromList = newCardName;
+        cardUsed = false;
+
+        SetupCardButton();
+    }
+}
+  </code></pre>
+
+      </div>
+    </div>
+  </div>
+</section>
     <section>
       <div class="container content-section">
         <div class="section-heading">
