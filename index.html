@@ -5,428 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Miguel Pineda | Technical Designer & Gameplay Programmer</title>
   <meta name="description" content="Portfolio of Miguel Pineda, a technical designer and gameplay programmer focused on AI, player mechanics, and gameplay systems." />
-
-  <style>
-    :root {
-      --bg: #0f1117;
-      --bg-soft: #171a23;
-      --card: #1f2330;
-      --text: #f4f4f5;
-      --muted: #b8bcc8;
-      --accent: #8b5cf6;
-      --accent-2: #38bdf8;
-      --border: rgba(255, 255, 255, 0.1);
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-      --radius: 22px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(139, 92, 246, 0.2), transparent 28rem),
-        radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 24rem),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(18px);
-      background: rgba(15, 17, 23, 0.78);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      font-size: 1rem;
-    }
-
-    .logo span {
-      color: var(--accent-2);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border-radius: 999px;
-      padding: 12px 18px;
-      font-weight: 700;
-      border: 1px solid var(--border);
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(56, 189, 248, 0.18);
-    }
-
-    .button.secondary {
-      background: transparent;
-      color: var(--text);
-    }
-
-    .hero {
-      padding: 92px 0 70px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 42px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 8px 12px;
-      color: var(--accent-2);
-      background: rgba(255, 255, 255, 0.04);
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: clamp(2.6rem, 7vw, 5.6rem);
-      line-height: 0.95;
-      letter-spacing: -0.07em;
-      margin-bottom: 22px;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.12rem;
-      max-width: 680px;
-      margin-bottom: 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 32px;
-    }
-
-    .quick-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .stat {
-      background: rgba(255, 255, 255, 0.045);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 16px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.45rem;
-      color: var(--text);
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .profile-card {
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035));
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .portrait-placeholder {
-      min-height: 360px;
-      border-radius: 18px;
-      background:
-        linear-gradient(135deg, rgba(139, 92, 246, 0.5), rgba(56, 189, 248, 0.3)),
-        url("images/profile.jpg");
-      background-size: cover;
-      background-position: center;
-      display: grid;
-      place-items: end start;
-      padding: 22px;
-      overflow: hidden;
-    }
-
-    .portrait-placeholder .caption {
-      background: rgba(15, 17, 23, 0.76);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    section {
-      padding: 72px 0;
-    }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 22px;
-      margin-bottom: 28px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: -0.04em;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      max-width: 560px;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-    }
-
-    .project-card {
-      border: 1px solid var(--border);
-      background: rgba(31, 35, 48, 0.88);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.24);
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(56, 189, 248, 0.5);
-    }
-
-    .project-image {
-      height: 230px;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.42), rgba(56, 189, 248, 0.2));
-      display: grid;
-      place-items: center;
-      color: rgba(255, 255, 255, 0.75);
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .project-content {
-      padding: 24px;
-    }
-
-    .project-content h3 {
-      font-size: 1.45rem;
-      margin-bottom: 8px;
-    }
-
-    .project-content p {
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
-
-    .tag {
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 6px 10px;
-      color: var(--muted);
-      font-size: 0.82rem;
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .project-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .small-link {
-      color: var(--accent-2);
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .skill-box {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      background: rgba(255, 255, 255, 0.045);
-    }
-
-    .skill-box h3 {
-      margin-bottom: 12px;
-      color: var(--accent-2);
-    }
-
-    .skill-box ul {
-      list-style: none;
-      color: var(--muted);
-    }
-
-    .skill-box li + li {
-      margin-top: 8px;
-    }
-
-    .resume-card {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
-      align-items: center;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 30px;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.16), rgba(56, 189, 248, 0.08));
-    }
-
-    .resume-card p {
-      color: var(--muted);
-      margin-top: 8px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-
-    .contact-card {
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-      background: rgba(255, 255, 255, 0.045);
-    }
-
-    .contact-card span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin-bottom: 4px;
-    }
-
-    .contact-card strong {
-      font-size: 0.98rem;
-      overflow-wrap: break-word;
-    }
-
-    footer {
-      padding: 36px 0;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      text-align: center;
-    }
-
-    @media (max-width: 900px) {
-      .hero-grid,
-      .project-grid,
-      .skills-grid,
-      .resume-card,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-heading {
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .quick-stats {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 680px) {
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 18px 0;
-      }
-
-      .nav-links {
-        flex-wrap: wrap;
-      }
-
-      .hero {
-        padding-top: 56px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+  
 </head>
 <body>
   <header>
@@ -474,7 +54,7 @@
 
         <aside class="profile-card">
            <img src="Images\miguelPic.jpeg" alt="Image of Miguel">
-          </div>
+          
         </aside>
       </div>
     </section>
@@ -489,8 +69,8 @@
         <div class="project-grid">
           <article class="project-card">
             <div class="project-image">
-              <span>Patched</span>
-              <!-- Replace with: <img src="images/patched.jpg" alt="Screenshot of Patched"> -->
+              <img src="Images\Patched_Title.png" alt="Patched banner">
+              <!-- Replace with:  -->
             </div>
             <div class="project-content">
               <h3>Patched</h3>
@@ -504,19 +84,19 @@
                 <span class="tag">C++</span>
                 <span class="tag">AI</span>
                 <span class="tag">Grappling Mechanic</span>
+                <span class="tag">Animations</span>
                 <span class="tag">Team Size: 14</span>
               </div>
               <div class="project-links">
-                <a class="small-link" href="#" target="_blank" rel="noopener">Project Page</a>
-                <a class="small-link" href="#" target="_blank" rel="noopener">Gameplay Video</a>
+                <a class="small-link" href="#" target="_blank" rel="noopener">Project Page</a>   <!-- Replace with link for the page -->
+                <a class="small-link" href="https://store.steampowered.com/app/4517340/PATCHED/" target="_blank" rel="noopener">Steam Page</a>
               </div>
             </div>
           </article>
 
           <article class="project-card">
             <div class="project-image">
-              <span>Dating Dungeon</span>
-              <!-- Replace with: <img src="images/dating-dungeon.jpg" alt="Screenshot of Dating Dungeon"> -->
+             <img src="Images\DatingDungeon.png" alt="Screenshot of Dating Dungeon">
             </div>
             <div class="project-content">
               <h3>Dating Dungeon</h3>
@@ -534,15 +114,14 @@
               </div>
               <div class="project-links">
                 <a class="small-link" href="#" target="_blank" rel="noopener">Project Page</a>
-                <a class="small-link" href="#" target="_blank" rel="noopener">GitHub</a>
+                <a class="small-link" href="https://github.com/popoyo07/dating-roguelike" target="_blank" rel="noopener">GitHub</a>
               </div>
             </div>
           </article>
 
           <article class="project-card">
             <div class="project-image">
-              <span>The Archives</span>
-              <!-- Replace with: <img src="images/the-archives.jpg" alt="Screenshot of The Archives"> -->
+              <img src="Images\TheArchiveIcon.png" alt="Screenshot of The Archives"> 
             </div>
             <div class="project-content">
               <h3>The Archives</h3>
@@ -567,8 +146,7 @@
 
           <article class="project-card">
             <div class="project-image">
-              <span>Fates of the Fallen</span>
-              <!-- Replace with: <img src="images/fates-of-the-fallen.jpg" alt="Screenshot of Fates of the Fallen"> -->
+             <img src="Images\Fates of the fallen icon.png" alt="Screenshot of Fates of the Fallen">
             </div>
             <div class="project-content">
               <h3>Fates of the Fallen</h3>
@@ -593,8 +171,7 @@
 
           <article class="project-card">
             <div class="project-image">
-              <span>Dream Punk</span>
-              <!-- Replace with: <img src="images/dream-punk.jpg" alt="Screenshot of Dream Punk"> -->
+              <img src="Images\Dream-Punk.jpg" alt="Screenshot of Dream Punk">
             </div>
             <div class="project-content">
               <h3>Dream Punk</h3>
@@ -702,7 +279,7 @@
           </a>
           <a class="contact-card" href="#" target="_blank" rel="noopener">
             <span>LinkedIn</span>
-            <strong>Add your LinkedIn URL</strong>
+            <strong>https://www.linkedin.com/in/miguel-pineda-gamedev/</strong>
           </a>
         </div>
       </div>
