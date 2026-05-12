@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fates of the Fallen | Miguel Pineda</title>
+  <meta name="description" content="Fates of the Fallen project page by Miguel Pineda. Unity adventure game focused on enemy AI, stealth interactions, NavMesh, and player-enemy systems." />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="logo">Miguel <span>Pineda</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#resume">Resume</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero project-detail-hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Unity · C# · Enemy AI · Stealth Systems</span>
+          <h1>Fates of the Fallen</h1>
+          <p>
+            Fates of the Fallen is a mythological adventure game developed in one month for a Game Production class.
+            The player is trapped in the depths of the underworld and must travel through realms like Elysium,
+            Asphodel Meadows, and Tartarus to collect relics and escape back to the world of the living.
+          </p>
+
+          <div class="tags hero-tags">
+            <span class="tag">Unity</span>
+            <span class="tag">C#</span>
+            <span class="tag">NavMesh</span>
+            <span class="tag">Enemy AI</span>
+            <span class="tag">Line of Sight</span>
+            <span class="tag">Stealth Gameplay</span>
+            <span class="tag">Player Interaction</span>
+            <span class="tag">Technical Design</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="button" href="https://ghost-knights.itch.io/fates-of-the-fallen-byghostknights" target="_blank" rel="noopener">
+              View Itch.io Page
+            </a>
+
+            <a class="button secondary" href="index.html#projects">
+              Back to Projects
+            </a>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="project-cover">
+            <img src="Images/Fates of the fallen icon.png" alt="Fates of the Fallen project image" />
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-section">
+        <div class="section-heading">
+          <h2>Game Trailer</h2>
+        </div>
+
+        <div class="media-card">
+          <video controls poster="Images/FatesOfTheFallen.png">
+            <source src="Videos/FatesOfTheFallenTrailer.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-section">
+        <div class="section-heading">
+          <h2>Main Contribution</h2>
+        </div>
+
+        <div class="detail-card">
+          <h3>Programmer & Technical Designer</h3>
+          <p>
+            For this project, I was responsible for developing enemy AI and player-enemy interaction systems.
+            My work focused on making enemies detect, chase, and react to the player while supporting stealth-based level design.
+          </p>
+          <p>
+            I implemented navigation using Unity NavMesh, prebaked navigation meshes for each scene, and worked with movement
+            boundaries so designers could create safe zones where the player could avoid enemy navigation paths.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-section">
+        <div class="section-heading">
+          <h2>Enemy AI System</h2>
+          <p>
+            The enemy AI was built around patrol, chase, detection, SFX feedback, and item-based takedown interactions.
+          </p>
+        </div>
+
+        <div class="deckdraw-layout">
+          <div class="detail-grid">
+            <article class="detail-card">
+              <h3>1. Navigation & Safe Zones</h3>
+              <p>
+                I used Unity NavMesh to control where enemies could move in each level. By setting movement boundaries and safe zones,
+                enemies could patrol designated areas while giving players spaces to hide or recover.
+              </p>
+            </article>
+
+            <article class="detail-card">
+              <h3>2. Line of Sight Detection</h3>
+              <p>
+                The Line of Sight system uses raycasting checks to detect the player within configurable values like radius,
+                view angle, and layer filters. This allowed enemy vision to be tuned per scene.
+              </p>
+            </article>
+
+            <article class="detail-card">
+              <h3>3. Patrol to Chase State Logic</h3>
+              <p>
+                The Enemy Behavior script receives detection information from the Line of Sight script and changes enemy behavior
+                from patrolling to chasing when the player is seen.
+              </p>
+            </article>
+
+            <article class="detail-card">
+              <h3>4. Hidden Zones & Cover</h3>
+              <p>
+                The system supports hidden zones through colliders, such as tall-grass cover in the Elysium level. This helped create
+                stealth gameplay where players could avoid detection by using the environment.
+              </p>
+            </article>
+
+            <article class="detail-card wide-card">
+              <h3>5. SFX and Enemy Feedback</h3>
+              <p>
+                Enemy Behavior also controls sound effects when enemies are patrolling, chasing, or being defeated, giving players
+                clearer feedback during stealth and chase moments.
+              </p>
+            </article>
+          </div>
+
+          <div class="side-screenshot-stack">
+            <figure class="gallery-card">
+              <img src="Images\In edditor Enemy.png" alt="Enemy prefab editor screenshot" />
+              <figcaption>Elysium safe zone setup</figcaption>
+            </figure>
+
+        
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-section">
+        <div class="section-heading">
+          <h2>Enemy Chase & Takedown Demo</h2>
+        </div>
+
+        <div class="media-card">
+          <video controls poster="Images/FatesImage.png">
+            <source src="Videos\FatesOfTheFallenEnemies.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-section">
+        <div class="section-heading">
+          <h2>AI Script Breakdown</h2>
+        </div>
+
+        <div class="script-card">
+          <div class="script-header">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <strong>EnemyBehavior.cs + LineOfSight.cs</strong>
+          </div>
+
+          <div class="script-body">
+            <h3>Purpose</h3>
+            <p>
+              These scripts work together to control how enemies detect the player, switch between patrol and chase behavior,
+              interact with hiding zones, and respond to takedown items.
+            </p>
+
+            <h3>How It Works</h3>
+            <ul>
+              <li>Line of Sight checks whether the player is inside the enemy's view radius and angle.</li>
+              <li>Raycasts verify that the player is visible and not blocked by the environment.</li>
+              <li>Enemy Behavior reads the detection result and switches between patrol and chase states.</li>
+              <li>Hidden zones prevent detection when the player is inside valid cover areas.</li>
+              <li>Takedown interactions check the enemy type and the item currently available in the player inventory.</li>
+            </ul>
+
+            <h3>Why I Built It This Way</h3>
+            <p>
+              I wanted the system to be reusable across multiple realms and enemy types. By separating detection logic from behavior logic,
+              designers could adjust vision settings and place cover zones without rewriting enemy behavior each time.
+            </p>
+
+
+          <div class="dual-script-grid">
+
+  <!-- LEFT SCRIPT -->
+  <div class="script-card">
+    <div class="script-header">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <strong>LineOfSight.cs</strong>
+    </div>
+
+    <div class="script-body">
+<pre><code>
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.PlayerLoop;
+using UnityEngine.UIElements;
+
+public class LineOfSight : MonoBehaviour
+{
+    // Reference to the player GameObject
+    public GameObject player;
+    // Reference to the player's movement script
+    public PlayerMovement playerMovement;
+    // Whether the enemy can currently chase the player
+    public bool canChase;
+
+    [Header("Raycast Settings")]
+    // Layer that represents obstacles (used to block line of sight)
+    public LayerMask obstacleLayer;
+    // Layer that represents the player (used to detect if player is in view range)
+    public LayerMask playerLayer;
+
+    // How far the enemy can see
+    public float radius;
+    // The field of view angle (spread of vision)
+    [Range(0, 360)]
+    public float angle;
+
+    private void Start()
+    {
+        // Find the player in the scene and get its PlayerMovement component
+        player = GameObject.Find("Player");
+        playerMovement = player.GetComponent();
+    }
+
+    void Update()
+    {
+        // Only perform vision checks if the player is not invisible
+        if (!playerMovement.Invisible)
+        {
+            FieldOfViewCheck();
+        }
+        else
+        {
+            // If player is invisible, enemy cannot chase
+            canChase = false;
+        }
+    }
+
+    /// <summary>
+    /// Checks if the player is within the enemy's field of view and not obstructed by obstacles.
+    /// </summary>
+    private void FieldOfViewCheck()
+    {
+        // Collect all colliders within the radius that are on the player layer
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, playerLayer);
+
+        // If at least one player collider was detected
+        if (rangeChecks.Length != 0)
+        {
+            // Get the transform of the first detected target (player)
+            Transform target = rangeChecks[0].transform;
+
+            // Calculate direction from enemy to player
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
+
+            // Check if the player is within the vision cone (angle/2 on each side)
+            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+            {
+                // Measure how far the player is
+                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+                // Draw a debug ray in the editor to visualize the line of sight
+                Debug.DrawRay(transform.position, directionToTarget * distanceToTarget, Color.red);
+
+                // Create an array to store raycast hits
+                RaycastHit[] hits = new RaycastHit[10];
+
+                // Cast a ray to check if any obstacle blocks the view between enemy and player
+                int hitCount = Physics.RaycastNonAlloc(
+                    transform.position,
+                    directionToTarget,
+                    hits,
+                    distanceToTarget,
+                    obstacleLayer,
+                    QueryTriggerInteraction.Collide
+                );
+
+                // If nothing blocks the view and the player isn’t invisible → enemy can chase
+                if (hitCount == 0 && !playerMovement.Invisible)
+                {
+                    canChase = true;
+                }
+                else
+                {
+                    canChase = false;
+                }
+            }
+            else
+            {
+                // Player is outside of vision cone
+                canChase = false;
+            }
+        }
+        else if (canChase)
+        {
+            // If player leaves detection range, stop chasing
+            canChase = false;
+        }
+    }
+
+}
+</code></pre>
+    </div>
+  </div>
+
+  <!-- RIGHT SCRIPT -->
+  <div class="script-card">
+    <div class="script-header">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <strong>EnemyBehavior.cs</strong>
+    </div>
+
+    <div class="script-body">
+<pre><code>
+
+using System.Collections;
+using UnityEngine;
+using UnityEngine.AI;
+
+
+// Handles enemy AI behavior including patrol, chase, and search routines.
+// Enemy will chase player when in line of sight, then search area if player escapes.
+public class EnemyBehavior : MonoBehaviour
+{
+    [SerializeField] bool shouldNotMove;
+    [SerializeField] Transform[] Waypoints;
+    public NavMeshAgent agent;
+    public string enemyType;
+    public Animator animator;
+    public AudioSource seeSFX;
+    bool sfxPlaying;
+ 
+    public GameManger gameManager;
+
+    int waypointIdnex;
+    public GameObject player;
+
+    public LineOfSight lineOfSight;
+    bool playerInNvav; // True if the player is within the navigable area (NavMesh)
+    bool isSearching;  // True while enemy is looking for the player’s last known position
+    bool chasing;
+    private Vector3 playerLastPostion;
+    bool lookingNew;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        enemyType = gameObject.name;
+        waypointIdnex = Random.Range(0, Waypoints.Length);
+        agent = GetComponent<NavMeshAgent>();
+        if (!shouldNotMove)
+        {
+            agent.SetDestination(Waypoints[waypointIdnex].position);
+        }
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManger>();
+      
+        player = GameObject.Find("Player");
+        lineOfSight = GetComponent<LineOfSight>();
+        // let navmesh handle rotation 
+        agent.updateRotation = true;
+    }
+
+    
+    void FixedUpdate()
+    {
+        // Stop walking animation when the enemy reaches its destination
+        if ((agent.remainingDistance < .2f || agent.isStopped == true) && animator != null && !shouldNotMove)
+        {
+            animator.SetBool("walking", false);
+        }
+        else if (animator != null)
+        {
+            animator.SetBool("walking", true);
+        }
+
+        // Ensure player reference is valid
+        if (player == null)
+        {
+            player = GameObject.Find("Player");
+        }
+
+        // Check if the player is within the NavMesh to prevent invalid path errors
+        playerInNvav = NavMesh.SamplePosition(player.transform.position, out NavMeshHit hit, 1f, NavMesh.AllAreas);
+
+        // Enemy logic:
+        // - If player is visible and inside NavMesh, start chasing
+        // - If player was being chased but is now lost, search last known area
+        // - Otherwise, continue patrolling
+        if (playerInNvav && lineOfSight.canChase && !shouldNotMove)
+        {
+            StopAllCoroutines(); // Stop any active search or patrol routines
+            chasing = true;
+            isSearching = false;
+            chase();
+        }
+        else if (chasing && !shouldNotMove)
+        {
+            chasing = false;
+            isSearching = true;
+            StartCoroutine(SearchArea());
+        }
+        else if (!isSearching && !shouldNotMove)
+        {
+            Patrol();
+        }
+    }
+
+    // Starts chasing the player using their current position.
+    // Plays sound effect once when chase begins.
+    void chase()
+    {
+        if (player != null && lineOfSight.canChase)
+        {
+
+            if (!sfxPlaying && seeSFX != null)
+            {
+                seeSFX.Play();
+                sfxPlaying = true;
+            }
+            agent.speed = 14;
+            agent.acceleration = 20;
+            playerLastPostion = player.transform.position; // save player postion
+            // Chase Player
+            agent.SetDestination(player.transform.position);
+            
+
+            Debug.Log("this is chased");
+
+        }
+       
+    }
+    private void Patrol()
+    {
+        // Set higher speed for smaller enemies 
+        // (EnemyE, EnemyA, and EnemyT are faster units)
+        sfxPlaying = false;
+        if (gameObject.tag == "EnemyE" || gameObject.tag == "EnemyA" || gameObject.tag == "EnemyT")
+        {
+            agent.speed = 8f;
+            agent.acceleration = 10f;
+        } else
+        {
+            agent.speed = 5.5f;
+            agent.acceleration = 8f;
+        }
+
+        // chose a new random waypoint when reach destination
+        if (agent.remainingDistance <= 0.1f)
+        {
+
+            StartCoroutine(NewDesitnation(1.5f));
+        
+        }
+    }
+
+   // Chooses a new random waypoint for the enemy to patrol to after waiting.
+    IEnumerator NewDesitnation (float waitTime)
+    {
+        if (lookingNew) // avid running again 
+        {
+            yield break;
+        } else { lookingNew = true; }
+       
+
+
+        yield return new WaitForSeconds(waitTime);
+        if (!shouldNotMove)
+        {
+            waypointIdnex = Random.Range(0, Waypoints.Length);
+            lookingNew = false;
+            isSearching = false;
+            agent.SetDestination(Waypoints[waypointIdnex].position);
+        }
+
+    }
+
+    // Searches around the player's last known position after losing sight.
+    public IEnumerator SearchArea()
+    {
+        isSearching= true;
+        for (int i = 0; i < 3; i++)
+        {// look around random locations after chasing player
+            Vector3 randomSearchPos = playerLastPostion + new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
+
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomSearchPos, out hit, 2f, NavMesh.AllAreas))
+            {
+
+                agent.SetDestination(randomSearchPos);
+               
+
+                Debug.Log("Searching area attempt: " + i);
+            }
+            else
+            {
+                continue;
+            }
+          
+
+          
+            yield return new WaitForSeconds(1f);
+        }
+        isSearching = false ;
+        Patrol();
+    }
+
+}
+</code></pre>
+    </div>
+  </div>
+
+</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-section">
+        <div class="section-heading">
+          <h2 > 
+            <a 
+            href= "https://github.com/corinnedaigle3/FatesoftheFallen" 
+            target="_blank"
+            rel="noopener">
+            Additional Scripts I Worked On
+            </a>
+          </h2>
+          <p>
+            Besides the main enemy AI systems, I also worked on several supporting gameplay scripts for level transitions,
+            fail states, portals, and win condition logic.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-box">
+            <h3>TeleportPlayerWaterE</h3>
+            <ul>
+              <li>Teleports the player back to the level starting point.</li>
+              <li>Used when the player falls in water, lava, outside the map, or gets caught by regular enemies.</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3>CatchBehave</h3>
+            <ul>
+              <li>Controls catch collider behavior.</li>
+              <li>Disables catch colliders when the player is invisible.</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3>Portal</h3>
+            <ul>
+              <li>Teleports the player between levels.</li>
+              <li>Supports movement through different underworld realms.</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3>TakeDown</h3>
+            <ul>
+              <li>Handles enemy takedown behavior when the player interacts with enemies.</li>
+              <li>Checks enemy type and required inventory item before resolving the interaction.</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3>GameManager</h3>
+            <ul>
+              <li>Handles win condition logic.</li>
+              <li>Tracks consumed gems and tutorial completion.</li>
+              <li>Uses stored data to enable or disable hub elements like statues and portals.</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3>Gameplay Support</h3>
+            <ul>
+              <li>Integrated VFX and SFX feedback.</li>
+              <li>Supported player and enemy interactions.</li>
+              <li>Helped debug teammate code when needed.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Miguel Pineda. Technical Designer & Gameplay Programmer.</p>
+    </div>
+  </footer>
+</body>
+</html>

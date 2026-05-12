@@ -577,9 +577,16 @@
 .script-body pre {
   margin: 0;
   padding: 22px;
-  overflow-x: auto;
+
   background: #080a0f;
   border-radius: 0 0 22px 22px;
+
+  overflow-x: auto;
+  overflow-y: auto;
+
+  max-height: 500px;
+
+  border-top: 1px solid var(--border);
 }
 
 .script-body code {
@@ -588,4 +595,12 @@
   line-height: 1.6;
   color: #d7dde8;
   white-space: pre;
+}
+
+
+
+@media (max-width: 900px) {
+  .dual-script-grid {
+    grid-template-columns: 1fr;
+  }
 }
