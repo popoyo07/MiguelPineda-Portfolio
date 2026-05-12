@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Archives | Miguel Pineda</title>
+  <meta name="description" content="The Archives project page by Miguel Pineda. Unity horror game jam project focused on enemy AI, sound detection, and stealth gameplay." />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="logo">Miguel <span>Pineda</span></a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#resume">Resume</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero project-detail-hero">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="eyebrow">Unity · C# · Horror · Game Jam</span>
+
+          <h1>The Archives</h1>
+
+          <p>
+            The Archives is a horror game created in 48 hours during a game jam. The player explores a dark archive while avoiding hostile enemies that react to player movement and sound. The project focused heavily on tension, stealth, and environmental atmosphere.
+          </p>
+
+          <div class="tags hero-tags">
+            <span class="tag">Unity</span>
+            <span class="tag">C#</span>
+            <span class="tag">Enemy AI</span>
+            <span class="tag">Sound Detection</span>
+            <span class="tag">Horror</span>
+            <span class="tag">Game Jam</span>
+            <span class="tag">48 Hours</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="button" href="https://popoyo07.itch.io/the-archives" target="_blank" rel="noopener">
+              View Itch.io Page
+            </a>
+
+            <a class="button secondary" href="index.html#projects">
+              Back to Projects
+            </a>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="project-cover">
+            <img src="Images/TheArchiveIcon.png" alt="The Archives project image" />
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-section">
+
+        <div class="section-heading">
+          <h2>Game Trailer</h2>
+        </div>
+
+        <div class="media-card">
+          <video controls poster="Images/TheArchives.png">
+            <source src="Videos/TheArchivesTrailer.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-section">
+
+        <div class="section-heading">
+          <h2>Main Contribution</h2>
+        </div>
+
+        <div class="detail-card">
+          <h3>Gameplay Programmer</h3>
+
+          <p>
+            My main contribution was developing the enemy AI system and player detection behavior. I focused on creating enemies that could react to player movement and investigate sound sources to create tension during exploration.
+          </p>
+
+          <p>
+            I also helped implement player interactions and gameplay logic needed for the stealth gameplay loop.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+   <section>
+  <div class="container content-section">
+
+    <div class="section-heading">
+      <h2>Enemy AI System</h2>
+      <p>
+        Video showing the sound-based enemy detection and investigation behavior.
+      </p>
+    </div>
+
+    <div class="media-card">
+      <video controls poster="Images/TheArchivesNeek.png">
+        <source src="Videos/ShowDeafEnemy.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container content-section">
+
+    <div class="section-heading">
+      <h2>Enemy AI Script Breakdown</h2>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <strong>EnemySoundAI.cs</strong>
+      </div>
+
+      <div class="script-body">
+        <h3>Purpose</h3>
+        <p>
+          This script controls how the enemy reacts to player sound, moves toward the last heard location, and creates pressure during exploration.
+        </p>
+
+        <h3>How It Works</h3>
+        <ul>
+          <li>Listens for sound events created by the player.</li>
+          <li>Stores the last heard position.</li>
+          <li>Moves the enemy toward that location to investigate.</li>
+          <li>Returns to patrol if the player is not found.</li>
+          <li>Supports the stealth/horror loop by making movement feel risky.</li>
+        </ul>
+
+        <pre><code>
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.ProBuilder.MeshOperations;
+
+public class EnemyNavigation : MonoBehaviour
+{
+    // Handles enemy pathfinding and navigation through Unity's NavMesh system
+    private NavMeshAgent agent;
+
+    // Array of waypoints used for the enemy’s patrol route
+    public Transform[] waypoints;
+
+    // Keeps track of the current waypoint index
+    private int wCount;
+
+    // Reference to the player object in the scene
+    private GameObject player;
+
+    // Used to detect if the player is making noise
+    private PlayerAudio playerAudio;
+
+    // Boolean tracking if player is producing noise
+    private bool playerNoise;
+
+    // Determines if the enemy is currently chasing the player
+    private bool isChasing = false;
+
+    // Determines if the enemy is in search mode after losing the player
+    public bool isSearching = false;
+
+    // Reference to the level canvas, used to trigger UI actions like Game Over
+    public GameObject levelCanvas;
+
+    // Stores player’s last known position when detected by sound
+    private Vector3 storePlayerLastPosition;
+
+    // Used for camera targeting during capture
+    public Transform enemyHead;
+
+    // Controls enemy’s animation states
+    private Animator SusEnemy;
+
+    // Plays enemy-related sound effects
+    AudioSource monsterAudio;
+
+    // Audio clip played when the player gets caught
+    [SerializeField] AudioClip catchingSound;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // If enemy collides with the player, trigger capture sequence
+        if (other.transform.tag == "Player")
+        {
+            CapturePlayer();
+        }
+        else if (other.transform.tag == "EndGame")
+        {
+            // If enemy collides with end trigger, stop and resume patrol
+            agent.isStopped = true;
+            Patrol();
+            agent.isStopped = false;
+        }
+    }
+
+    private void CapturePlayer()
+    {
+        // Stop animation playback to freeze the enemy’s motion
+        SusEnemy.StartPlayback();
+
+        // Stop navigation movement
+        agent.isStopped = true;
+
+        // Play the capture sound effect once
+        monsterAudio.clip = catchingSound;
+        monsterAudio.loop = false;
+        monsterAudio.Play();
+
+        // Make both enemy and player look at each other
+        transform.LookAt(player.transform.position);
+        player.transform.LookAt(transform.position);
+
+        // Mark player as caught for the gameplay system
+        player.GetComponent<PlayerMovement>().gotCaught = true;
+
+        // If available, smoothly rotate the player’s camera to face the enemy
+        Camera playerCamera = player.GetComponentInChildren<Camera>();
+        if (playerCamera != null && enemyHead != null)
+        {
+            StartCoroutine(SmoothCameraFocus(playerCamera));
+        }
+    }
+
+    // Coroutine that smoothly rotates the camera toward the enemy’s head
+    private IEnumerator SmoothCameraFocus(Camera cam)
+    {
+        float duration = 1.2f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation,
+                Quaternion.LookRotation(enemyHead.position - cam.transform.position),
+                elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+    }
+}
+        </code></pre>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <section>
+      <div class="container content-section">
+
+        <div class="section-heading">
+          <h2>What I Learned</h2>
+          <p>
+            This project helped me improve my ability to rapidly prototype gameplay systems under strict time constraints.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+
+          <div class="skill-box">
+            <h3>Rapid Iteration</h3>
+            <ul>
+              <li>48-hour development cycle</li>
+              <li>Fast gameplay testing</li>
+              <li>Quick bug fixing</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3>AI Systems</h3>
+            <ul>
+              <li>Sound-based AI reactions</li>
+              <li>State switching</li>
+              <li>Investigation behavior</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3>Team Collaboration</h3>
+            <ul>
+              <li>Cross-discipline teamwork</li>
+              <li>Shared debugging</li>
+              <li>Game jam production workflow</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Miguel Pineda. Technical Designer & Gameplay Programmer.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
