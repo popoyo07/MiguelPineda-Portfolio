@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dating Dungeon | Miguel Pineda</title>
+  <meta name="description" content="Dating Dungeon project page by Miguel Pineda. Unity deck-builder roguelike focused on card systems, battle systems, and data-driven gameplay." />
+
+  <!-- If this file is inside a pages folder, use ../css/style.css instead -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="logo">Miguel <span>Pineda</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#resume">Resume</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero project-detail-hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Unity · C# · Deck Builder Roguelike</span>
+          <h1>Dating Dungeon</h1>
+          <p>
+            Dating Dungeon is a deck-builder roguelike where players go on adventures inside dungeons to find treasure,
+            fight enemies, and sometimes even find love. For this project, I worked as a programmer and technical designer,
+            focusing mainly on the card system, battle system, and data-driven gameplay structure.
+          </p>
+          <div class="tags hero-tags">
+            <span class="tag">Unity</span>
+            <span class="tag">C#</span>
+            <span class="tag">Deck Builder</span>
+            <span class="tag">Roguelike</span>
+            <span class="tag">Card Systems</span>
+            <span class="tag">Battle Systems</span>
+            <span class="tag">Technical Design</span>
+          </div>
+
+   
+    <div class="hero-actions">
+    <a class="button" href="https://github.com/popoyo07/dating-roguelike" target="_blank" rel="noopener">
+        View GitHub
+    </a>
+
+    <a class="button secondary" href="index.html#projects">
+        Back to Projects
+    </a>
+</div>
+
+</div>
+       
+
+        <aside class="profile-card">
+          <div class="project-cover">
+            <img src="Images/DatingDungeon.png" alt="Dating Dungeon project image" />
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  <section>
+  <div class="container content-section">
+
+    <div class="section-heading">
+      <h2>Gameplay Showcase</h2>
+      <p>
+        Overview of the gameplay systems and card mechanics developed for Dating Dungeon.
+      </p>
+    </div>
+
+    <div class="youtube-container">
+      <iframe 
+     
+      src="https://www.youtube.com/embed/87V8W0Ggoq0" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+    </div>
+
+  </div>
+</section>
+ <section>
+  <div class="container content-section">
+
+    <div class="section-heading">
+      <h2>Main Contribution</h2>
+    </div>
+
+    <div class="detail-card">
+      <h3>Programmer & Technical Designer</h3>
+
+      <p>
+        For this project, I was mostly responsible for designing and
+        implementing the card and battle systems used throughout gameplay.
+      </p>
+
+      <p>
+        I developed systems for deck drawing, card management,
+        runtime data handling, and class-based gameplay behaviors
+        using ScriptableObjects and modular C# architecture.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+    <section>
+      <div class="container content-section">
+        <div class="section-heading">
+          <h2>Card Manager Demo</h2>
+         
+        </div>
+
+        <div class="media-card">
+        
+          <video controls poster="Images/DatingDungeon.png">
+            <source src="Videos\CardsDemo.mp4" type="video/mp4" />
+ 
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-section">
+        <div class="section-heading">
+          <h2>DeckDraw System</h2>
+          <p>DeckDraw acts as the central deck manager that controls the player’s active deck during gameplay.</p>
+        </div>
+
+        <div class="detail-grid">
+          <article class="detail-card">
+            <h3>1. Loading Player Class Data</h3>
+            <p>
+              When a match starts, DeckDraw reads the player’s save data to determine which character class the player selected,
+              such as Knight or Chemist. This lets the system automatically load the correct starting cards for that class.
+            </p>
+          </article>
+
+          <article class="detail-card">
+            <h3>2. Reading ScriptableObject Card Data</h3>
+            <p>
+              Each card is defined as a ScriptableObject containing the card name, sprite, and description text. DeckDraw processes
+              these ScriptableObjects from the starting deck array to build the in-match deck.
+            </p>
+          </article>
+
+          <article class="detail-card">
+            <h3>3. Runtime Dictionaries</h3>
+            <p>
+              To make UI lookups faster, DeckDraw stores card information in dictionaries. One dictionary maps card names to sprites,
+              while another maps card names to description text.
+            </p>
+          </article>
+
+          <article class="detail-card">
+            <h3>4. Random Card Drawing</h3>
+            <p>
+              At the start of each turn, DeckDraw randomly selects five cards from the deck list. These card names are then passed to
+              AssignCard, which displays the correct card sprite and description.
+            </p>
+          </article>
+
+          <article class="detail-card wide-card">
+            <h3>5. Calling Card Actions by Name</h3>
+            <p>
+              Each character class has its own action script that inherits from a shared base Cards class. AssignCard uses the card name
+              provided by DeckDraw to call the correct gameplay function through a card-action dictionary built on startup.
+            </p>
+            <p>
+              This made the system flexible because new cards could be added through data, UI information could update automatically,
+              and different classes could share or override abilities when needed.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-section">
+        <div class="section-heading">
+          <h2>Inspector & Script Demos</h2>
+          <p>Add screenshots or videos of your Unity Inspector, DeckDraw script, and AssignCard behavior here.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-card">
+            <img src="Images/DatingDungeon.png" alt="DeckDraw inspector screenshot placeholder" />
+            <figcaption>DeckDraw Inspector View</figcaption>
+          </figure>
+
+          <figure class="gallery-card">
+            <img src="Images/DatingDungeon.png" alt="Card system screenshot placeholder" />
+            <figcaption>Card Data and Runtime Setup</figcaption>
+          </figure>
+        </div>
+
+        <div class="media-card spaced-media">
+          <!-- Replace the src with your real AssignCard video file path, for example: Videos/AssignCardDemo.mp4 -->
+          <video controls poster="Images/DatingDungeon.png">
+            <source src="Videos/AssignCardDemo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container content-section">
+        <div class="section-heading">
+          <h2>What This System Allowed</h2>
+          <p>The card system was built to support fast iteration and easier content expansion.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-box">
+            <h3>Data-Driven Cards</h3>
+            <ul>
+              <li>Card names</li>
+              <li>Sprites</li>
+              <li>Description text</li>
+              <li>Starting deck arrays</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3>Gameplay Logic</h3>
+            <ul>
+              <li>Class-specific actions</li>
+              <li>Dynamic card function mapping</li>
+              <li>Turn-based card drawing</li>
+              <li>Deck state tracking</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3>UI Support</h3>
+            <ul>
+              <li>Sprite assignment</li>
+              <li>Description display</li>
+              <li>Card interaction handling</li>
+              <li>Animation support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Miguel Pineda. Technical Designer & Gameplay Programmer.</p>
+    </div>
+  </footer>
+</body>
+</html>
