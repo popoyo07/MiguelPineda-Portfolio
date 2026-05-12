@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patched | Miguel Pineda</title>
+  <meta name="description" content="Patched project page by Miguel Pineda. Unreal Engine technical design and gameplay programming breakdown focused on grappling, parry, limb health, enemy AI, animation systems, and debugging leadership." />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="logo">Miguel <span>Pineda</span></a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#resume">Resume</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero project-detail-hero" id="overview">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="eyebrow">Unreal Engine · Blueprint Scripting · C++ · Technical Design</span>
+
+          <h1>Patched</h1>
+
+        <p>
+  PATCHED is a platforming, puzzle, and adventure game about a lonely abandoned doll who awakens inside an empty, decrepit factory. As the doll explores the factory, they collect parts to rebuild their body, unlock abilities like sewing, grappling, and parrying, and uncover the dark truth behind their creation.
+</p>
+
+<p>
+  On this project, I worked as a Lead Programmer and Technical Designer, focusing on core gameplay systems such as the grappling mechanic, parry system, limb-based health, enemy AI, animation blueprints, and team debugging support.
+</p>
+
+          <div class="tags hero-tags">
+            <span class="tag">Unreal Engine</span>
+            <span class="tag">Blueprints</span>
+            <span class="tag">C++</span>
+            <span class="tag">Gameplay Systems</span>
+            <span class="tag">Enemy AI</span>
+            <span class="tag">Animation Blueprints</span>
+            <span class="tag">Technical Design</span>
+            <span class="tag">Lead Programmer</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="button" href="https://store.steampowered.com/app/4517340/PATCHED/" target="_blank" rel="noopener">
+              View Steam Page
+            </a>
+
+            <a class="button secondary" href="index.html#projects">
+              Back to Projects
+            </a>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="project-cover">
+            <img src="Images/Patched_Title.png" alt="Patched project image" />
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container patched-layout">
+
+        <aside class="project-sidebar" aria-label="Patched page navigation">
+          <h3>Patched Breakdown</h3>
+          <a href="#overview">Overview</a>
+          <a href="#trailer">Trailer</a>
+          <a href="#contribution">Main Contribution</a>
+          <a href="#grapple">Grappling Mechanic</a>
+          <a href="#parry">Parry System</a>
+          <a href="#health">Limb Health System</a>
+          <a href="#ai">Enemy AI</a>
+          <a href="#animation">Animation Systems</a>
+          <a href="#debugging">Leadership & Debugging</a>
+          <a href="#learned">What I Learned</a>
+        </aside>
+
+        <div class="patched-content">
+
+          <section class="content-section inner-section" id="trailer">
+            <div class="section-heading">
+              <h2>Game Trailer</h2>
+            </div>
+
+            <div class="media-card wide-media">
+              <video controls poster="Images\trailerPatchedimg.png">
+                <source src="Videos/PATCHED _ Trailer.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </section>
+
+          <section class="content-section inner-section" id="contribution">
+            <div class="section-heading">
+              <h2>Main Contribution</h2>
+            </div>
+
+            <div class="detail-card">
+              <h3>Lead Programmer & Technical Designer</h3>
+              <p>
+                On Patched, I contributed to several core gameplay systems and supported the team by debugging Blueprint and code issues.
+                My work focused on creating player-facing mechanics, enemy behavior, animation state logic, and technical systems that connected gameplay, animation, and level design.
+              </p>
+              <p>
+                Since this was a larger and longer project, my role also involved helping teammates troubleshoot systems that were not originally built by me, making sure features could continue working together as the project grew.
+              </p>
+            </div>
+
+            <div class="media-card spaced-media">
+              <video controls poster="Images/GameplayImage.png">
+                <source src="Videos/PATCHED _ Gameplay.mp4" type="video/mp4" />
+              </video>
+          </section>
+
+          <section class="content-section inner-section" id="grapple">
+            <div class="section-heading">
+              <h2>Grappling Mechanic</h2>
+              <p>
+                A multi-purpose needle system used for traversal, limb recovery, and special enemy interactions.
+              </p>
+            </div>
+
+            <div class="system-showcase-grid">
+              <div class="detail-grid">
+                <article class="detail-card">
+                  <h3>1. Aim & Shoot Flow</h3>
+                  <p>
+                    The player presses one input to enter aim mode, then another input to shoot the needle. The system uses a raycast to determine what the player hit and which behavior should activate.
+                  </p>
+                </article>
+
+                <article class="detail-card">
+                  <h3>2. Grapple Point Movement</h3>
+                  <p>
+                    If the raycast hits a valid grabbable object, the player is pulled toward that location, creating a traversal tool for reaching platforms and moving through the level.
+                  </p>
+                </article>
+
+                <article class="detail-card">
+                  <h3>3. Limb Pulling</h3>
+                  <p>
+                    If the raycast hits a detached limb, the limb is pulled back toward the player so it can be recovered and attached again.
+                  </p>
+                </article>
+
+                <article class="detail-card wide-card">
+                  <h3>4. Optional Flying Enemy Interaction</h3>
+                  <p>
+                    If the needle hits a specific optional flying enemy, the grapple system triggers a minigame sequence. The minigame itself was not made by me, but I connected the grapple interaction so it could start from the needle hit behavior.
+                  </p>
+                </article>
+              </div>
+
+              <div class="side-screenshot-stack">
+                <figure class="gallery-card">
+                  <img src="Images\GrapplingDemo.gif" alt="Patched grapple mechanic demo" />
+                  <figcaption>Early Grapple traversal and targeting demo</figcaption>
+                </figure>
+             
+                  <figure class="gallery-card">
+                  <img src="Images\GrapplingDemoF.gif" alt="Patched grapple mechanic demo" />
+                  <figcaption>Final Grapple traversal and targeting demo</figcaption>
+                </figure>
+                </div>
+                
+              </div>
+
+
+            <div class="blueprint-card spaced-media">
+              <div class="script-header">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <strong>Grappling Blueprint Showcase</strong>
+              </div>
+
+              <div class="blueprint-embed">
+                <iframe src="https://blueprintue.com/render/82dvvgy2/" allowfullscreen></iframe>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section inner-section" id="parry">
+            <div class="section-heading">
+              <h2>Parry System</h2>
+              <p>
+                A timing-based defensive mechanic driven by animation notifies and enemy attack checks.
+              </p>
+            </div>
+
+            <div class="system-showcase-grid">
+              <div class="detail-grid">
+                <article class="detail-card">
+                  <h3>1. Player Parry Input</h3>
+                  <p>
+                    The player presses a button to start the parry animation. The parry is not active for the entire animation, which makes timing important.
+                  </p>
+                </article>
+
+                <article class="detail-card">
+                  <h3>2. Animation Notify Timing</h3>
+                  <p>
+                    Animation notifiers determine the valid parry frames. During these frames, the player is considered to be actively parrying.
+                  </p>
+                </article>
+
+                <article class="detail-card">
+                  <h3>3. Enemy Attack Result</h3>
+                  <p>
+                    When the enemy attack connects, the enemy checks whether the player is currently parrying. If the player is not parrying, the player loses the shield.
+                  </p>
+                </article>
+
+                <article class="detail-card wide-card">
+                  <h3>4. Successful Parry</h3>
+                  <p>
+                    If the player is inside the correct parry window, the enemy becomes stunned instead of damaging the player. This creates a defensive option based on animation timing and player reaction.
+                  </p>
+                </article>
+              </div>
+
+              <div class="side-screenshot-stack">
+                <figure class="gallery-card">
+                  <img src="Images/ParryShowcase.gif" alt="Patched parry system demo" />
+                  <figcaption>Parry timing and enemy stun result</figcaption>
+                </figure>
+
+                <figure class="gallery-card">
+                  <img src="Images/ParryImage.png" alt="Patched parry system demo" />
+                  <figcaption>Parry timing and enemy stun result</figcaption>
+                </figure>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section inner-section" id="health">
+            <div class="section-heading">
+              <h2>Player Limb Health System</h2>
+              <p>
+                A health system where damage physically removes limbs and changes the player state.
+              </p>
+            </div>
+
+            <div class="detail-card">
+              <h3>Limb-Based Damage</h3>
+              <p>
+                Instead of using a traditional health bar, the player loses limbs as their health decreases. When a limb is lost, the player drops that limb into the world, creating a visible and mechanical consequence for taking damage.
+              </p>
+              <p>
+                The player can later attach the limb back to their body, connecting the health system with player recovery and animation states.
+              </p>
+              <p>
+                Once player loses a limb, the texture for the player model will be replaced with a texture that makes the player limbs invisible. Depending on the amount of limbs certain mechanics like pushing boxes or jumping will be unavailable until player recovers their limbs. 
+              </p>
+
+            </div>
+
+            <div class="media-card spaced-media">
+              <video controls poster="Images/Patched_Title.png">
+                <source src="Videos/LimbsShowcase.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </section>
+
+          <section class="content-section inner-section" id="ai">
+            <div class="section-heading">
+              <h2>Enemy AI Systems</h2>
+              <p>
+                Multiple enemy types built around different player detection methods and level design needs.
+              </p>
+            </div>
+
+            <div class="detail-grid">
+              <article class="detail-card">
+                <h3>Deaf Enemy</h3>
+                <p>
+                  The deaf enemy uses sight-based detection to identify and chase the player. This enemy was designed around visual awareness and line-of-sight behavior.
+                </p>
+              </article>
+
+              <article class="detail-card">
+                <h3>Blind Enemy</h3>
+                <p>
+                  The blind enemy tracks the player through sound. It reacts to audio cues, investigates the last heard location, and creates pressure through movement-based stealth.
+                </p>
+              </article>
+
+              <article class="detail-card">
+                <h3>Simplified Chase Enemies</h3>
+                <p>
+                  Later in development, I created simpler versions of enemies using the core chase and attack behavior from the larger enemy systems. These enemies were triggered through box colliders to quickly start chase encounters.
+                </p>
+              </article>
+
+              <article class="detail-card">
+                <h3>Hazard & Swarm Variants</h3>
+                <p>
+                  One simplified enemy pushes the player so they can fall to their death, while another performs a regular attack and is used in areas where many enemies attack the player at once.
+                </p>
+              </article>
+            </div>
+
+            <div class="media-card spaced-media">
+              <video controls poster="Images/Patched_Title.png">
+                <source src="Videos/PatchedEnemyAI.mp4" type="video/mp4" />
+              </video>
+            </div>
+
+            <div class="blueprint-card spaced-media">
+              <div class="script-header">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <strong>Enemy AI Blueprint / Behavior Tree Showcase</strong>
+              </div>
+
+              <div class="blueprint-embed">
+                <iframe src="https://blueprintue.com/render/REPLACE_AI_BLUEPRINT/" allowfullscreen></iframe>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section inner-section" id="animation">
+            <div class="section-heading">
+              <h2>Animation Blueprint Systems</h2>
+              <p>
+                I authored the Animation Blueprint logic for the player, enemies, and extra gameplay actors.
+              </p>
+            </div>
+
+            <div class="detail-card">
+              <h3>Player Animation Blueprint</h3>
+              <p>
+                For the player Animation Blueprint, I built cached state machines that changed depending on gameplay context, including grappling, missing limbs, sewing a limb back on, death, and aim mode.
+              </p>
+              <p>
+                Some state machines were more complex because the player could still use multiple mechanics when they had their full body. This required the animation logic to handle several overlapping gameplay behaviors while keeping transitions readable and responsive.
+              </p>
+            </div>
+
+            <div class="detail-grid spaced-media">
+              <article class="detail-card">
+                <h3>Player States</h3>
+                <p>
+                  Grapple, aim, sewing limb, missing limb states, death, and full-body interaction states.
+                </p>
+              </article>
+
+              <article class="detail-card">
+                <h3>Enemy States</h3>
+                <p>
+                  Enemy animations connected to chase, attack, stun, and detection behavior.
+                </p>
+              </article>
+
+              <article class="detail-card wide-card">
+                <h3>Gameplay to Animation Sync</h3>
+                <p>
+                  Animation logic was connected to gameplay systems through state checks, animation notifies, and Blueprint variables so player mechanics and enemy reactions could sync correctly with animation timing.
+                </p>
+              </article>
+            </div>
+
+            <div class="blueprint-card spaced-media">
+              <div class="script-header">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <strong>Animation Blueprint Showcase</strong>
+              </div>
+
+              <div class="blueprint-embed">
+                <iframe src="https://blueprintue.com/render/REPLACE_ANIMATION_BLUEPRINT/" allowfullscreen></iframe>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section inner-section" id="debugging">
+            <div class="section-heading">
+              <h2>Leadership & Debugging</h2>
+              <p>
+                As Lead Programmer, I helped debug multiple team systems and supported teammates when features broke or needed integration help.
+              </p>
+            </div>
+
+            <div class="detail-card">
+              <h3>Camera Spline Debugging Example</h3>
+              <p>
+                One issue involved switching from the regular gameplay camera to a spline camera. The original system caused the player to get stuck if they were not inside a specific collider, leaving them unable to move or interact.
+              </p>
+              <p>
+                The issue came from a branch/check that handled one result but did not properly reset player control when the condition was false. I helped identify that the false path was not hooked up to restore the player controller state, then connected the missing logic so the player could regain control correctly.
+              </p>
+            </div>
+
+            <div class="skills-grid spaced-media">
+              <div class="skill-box">
+                <h3>Debugging Support</h3>
+                <ul>
+                  <li>Helped teammates troubleshoot Blueprint and code issues</li>
+                  <li>Tracked logic breaks across gameplay systems</li>
+                  <li>Fixed integration issues between mechanics</li>
+                </ul>
+              </div>
+
+              <div class="skill-box">
+                <h3>Team Support</h3>
+                <ul>
+                  <li>Assigned tasks and supported feature completion</li>
+                  <li>Helped connect systems made by different developers</li>
+                  <li>Communicated technical issues with the team</li>
+                </ul>
+              </div>
+
+              <div class="skill-box">
+                <h3>Technical Ownership</h3>
+                <ul>
+                  <li>Owned major player, AI, and animation systems</li>
+                  <li>Maintained core gameplay behavior during iteration</li>
+                  <li>Adjusted systems as project scope evolved</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-section inner-section" id="learned">
+            <div class="section-heading">
+              <h2>What I Learned</h2>
+            </div>
+
+            <div class="detail-card">
+              <p>
+                Patched helped me grow as both a gameplay programmer and technical designer because it required me to connect player mechanics, AI, animation, and level interactions into one playable experience. I learned how important it is to keep systems modular, debug across other developers’ work, and build gameplay features that can evolve as the project grows.
+              </p>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Miguel Pineda. Technical Designer & Gameplay Programmer.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
