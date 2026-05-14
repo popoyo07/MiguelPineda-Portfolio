@@ -696,3 +696,12 @@
 h3 {
   color: var(--accent-2);
 }
+
+.media-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 16px;
+  background: #000;
+  display: block;
+}
