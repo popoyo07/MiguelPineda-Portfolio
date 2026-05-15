@@ -34,11 +34,13 @@
           <h1>Patched</h1>
 
         <p>
-  PATCHED is a platforming, puzzle, and adventure game about a lonely abandoned doll who awakens inside an empty, decrepit factory. As the doll explores the factory, they collect parts to rebuild their body, unlock abilities like sewing, grappling, and parrying, and uncover the dark truth behind their creation.
+  PATCHED is a platforming, puzzle, and adventure game about a lonely abandoned doll who awakens inside an empty, decrepit factory.
+   As the doll explores the factory, they collect parts to rebuild their body, unlock abilities like sewing, grappling, and parrying, and uncover the dark truth behind their creation.
 </p>
 
 <p>
-  On this project, I worked as a Lead Programmer and Technical Designer, focusing on core gameplay systems such as the grappling mechanic, parry system, limb-based health, enemy AI, animation blueprints, and team debugging support.
+  On this project, I worked as a Lead Programmer and Technical Designer, focusing on core gameplay systems such as the grappling mechanic, parry system, 
+  limb-based health, enemy AI, animation blueprints, and team debugging support.
 </p>
 
           <div class="tags hero-tags">
@@ -118,7 +120,8 @@
                 My work focused on creating player-facing mechanics, enemy behavior, animation state logic, and technical systems that connected gameplay, animation, and level design.
               </p>
               <p>
-                Since this was a larger and longer project, my role also involved helping teammates troubleshoot systems that were not originally built by me, making sure features could continue working together as the project grew.
+                Since this was a larger and longer project, my role also involved helping teammates troubleshoot systems that were not originally built by me,
+                 making sure features could continue working together as the project grew.
               </p>
             </div>
 
@@ -145,7 +148,8 @@
                 <article class="detail-card">
                   <h3>1. Aim & Shoot Flow</h3>
                   <p>
-                    The player presses one input to enter aim mode, then another input to shoot the needle. The system uses a raycast to determine what the player hit and which behavior should activate.
+                    The player presses one input to enter aim mode, then another input to shoot the needle. 
+                    The system uses a raycast to determine what the player hit and which behavior should activate.
                   </p>
                 </article>
 
@@ -166,7 +170,8 @@
                 <article class="detail-card wide-card">
                   <h3>4. Optional Flying Enemy Interaction</h3>
                   <p>
-                    If the needle hits a specific optional flying enemy, the grapple system triggers a minigame sequence. The minigame itself was not made by me, but I connected the grapple interaction so it could start from the needle hit behavior.
+                    If the needle hits a specific optional flying enemy, the grapple system triggers a minigame sequence. 
+                    The minigame itself was not made by me, but I connected the grapple interaction so it could start from the needle hit behavior.
                   </p>
                 </article>
               </div>
@@ -221,7 +226,8 @@
                 <article class="detail-card">
                   <h3>1. Player Parry Input</h3>
                   <p>
-                    The player presses a button to start the parry animation. The parry is not active for the entire animation, which makes timing important.
+                    The player presses a button to start the parry animation.
+                     The parry is not active for the entire animation, which makes timing important.
                   </p>
                 </article>
 
@@ -235,23 +241,29 @@
                 <article class="detail-card">
                   <h3>3. Enemy Attack Result</h3>
                   <p>
-                    When the enemy attack connects, the enemy checks whether the player is currently parrying. If the player is not parrying, the player loses the shield.
+                    When the enemy attack connects, the enemy checks whether the player is currently parrying. 
+                    If the player is not parrying, the player loses the shield.
                   </p>
                 </article>
 
                 <article class="detail-card wide-card">
                   <h3>4. Successful Parry</h3>
                   <p>
-                    If the player is inside the correct parry window, the enemy becomes stunned instead of damaging the player. This creates a defensive option based on animation timing and player reaction.
+                    If the player is inside the correct parry window, the enemy becomes stunned instead of damaging the player.
+                     This creates a defensive option based on animation timing and player reaction.
                   </p>
                 </article>
               </div>
 
               <div class="side-screenshot-stack">
-                <figure class="gallery-card">
-                  <img src="Images/.gif" alt="Patched parry system demo" />
-                  <figcaption>Parry timing and enemy stun result</figcaption>
-                </figure>
+                  <div class="media-card">
+            <iframe
+              src="https://www.youtube.com/embed/j3_DXDNDcXo?si=F1eFlZrMd0ezgSPl"
+              title="Patched Parry"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
 
                 <figure class="gallery-card">
                   <img src="Images/ParryImage.png" alt="Patched parry system demo" />
@@ -272,23 +284,32 @@
             <div class="detail-card">
               <h3>Limb-Based Damage</h3>
               <p>
-                Instead of using a traditional health bar, the player loses limbs as their health decreases. When a limb is lost, the player drops that limb into the world, creating a visible and mechanical consequence for taking damage.
+                Instead of using a traditional health bar, the player loses limbs as their health decreases. When a limb is lost, the player drops that limb into the world,
+                 creating a visible and mechanical consequence for taking damage.
               </p>
               <p>
                 The player can later attach the limb back to their body, connecting the health system with player recovery and animation states.
               </p>
               <p>
-                Once player loses a limb, the texture for the player model will be replaced with a texture that makes the player limbs invisible. Depending on the amount of limbs certain mechanics like pushing boxes or jumping will be unavailable until player recovers their limbs. 
+                Once player loses a limb, the texture for the player model will be replaced with a texture that makes the player limbs invisible. 
+                Depending on the amount of limbs certain mechanics like pushing boxes or jumping will be unavailable until player recovers their limbs. 
               </p>
 
             </div>
 
             <div class="media-card spaced-media">
-              <video controls poster="Images/Patched_Title.png">
-                <source src="Videos/LimbsShowcase.mp4" type="video/mp4" />
-              </video>
+                <iframe
+              src="https://www.youtube.com/embed/8WbOxifhyIg?si=kdjbH7uxm15gQOgj"
+              title="Patched Parry"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
             </div>
+
+            
           </section>
+
+      
 
           <section class="content-section inner-section" id="ai">
             <div class="section-heading">
