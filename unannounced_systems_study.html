@@ -1,147 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multiplayer Gameplay Systems Study | Miguel Pineda</title>
-  <meta name="description" content="An independent Unreal Engine 5 technical study by Miguel Pineda covering data-driven objectives, player-specific runtime state, authoritative timers, and UI synchronization." />
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unannounced DSI Project | Miguel Pineda</title>
+    <meta name="description" content="Miguel Pineda's gameplay programming and development leadership work on an unannounced Unreal Engine 5 project at Digital Scorpion Interactive." />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a href="index.html" class="logo">Miguel <span>Pineda</span></a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html#projects">Projects</a>
-        <a href="index.html#skills">Skills</a>
-        <a href="index.html#resume">Resume</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero project-detail-hero" id="overview">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Unreal Engine 5 · C++ · Multiplayer Systems · Independent Study</span>
-          <h1>Multiplayer Gameplay Systems Study</h1>
-          <p>
-            This independent technical study explores reusable patterns for player-specific objectives,
-            authoritative timers, runtime state, and UI synchronization in Unreal Engine 5.
-          </p>
-          <p>
-            The examples on this page were recreated specifically for portfolio demonstration. They do
-            not contain production source code, proprietary assets, internal documentation, or details
-            from an unreleased project.
-          </p>
-
-          <div class="tags hero-tags">
-            <span class="tag">Unreal Engine 5</span>
-            <span class="tag">C++</span>
-            <span class="tag">Blueprints</span>
-            <span class="tag">Server Authority</span>
-            <span class="tag">Runtime State</span>
-            <span class="tag">UMG</span>
-            <span class="tag">Gameplay Architecture</span>
-          </div>
-
-          <div class="hero-actions">
-            <a class="button" href="#runtime-state">View Breakdown</a>
-            <a class="button secondary" href="index.html#projects">Back to Projects</a>
-          </div>
+    <header>
+        <div class="container nav">
+            <a href="index.html" class="logo">Miguel <span>Pineda</span></a>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#resume">Resume</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
         </div>
+    </header>
 
-        <aside class="profile-card">
-          <div class="detail-card">
-            <h3>Study Goals</h3>
-            <ul>
-              <li>Separate reusable definitions from runtime state.</li>
-              <li>Give each player an independent objective instance.</li>
-              <li>Keep important decisions authoritative.</li>
-              <li>Drive UI from gameplay state instead of duplicating logic.</li>
-            </ul>
-          </div>
-        </aside>
-      </div>
-    </section>
+    <main>
+        <section class="hero project-detail-hero" id="overview">
+            <div class="container hero-grid">
+                <div>
+                    <span class="eyebrow">Digital Scorpion Interactive · Unreal Engine 5 · C++ · Blueprints</span>
+                    <h1>Unannounced DSI Project</h1>
+                    <p>
+                        This unannounced cooperative delivery game is being developed in Unreal Engine 5. Its core
+                        experience centers on accepting jobs, handling cargo, and completing deliveries with a vehicle.
+                    </p>
+                    <p>
+                        As Development Lead at Digital Scorpion Interactive, I implement gameplay systems in C++ and
+                        Blueprints, debug interconnected features, review code, coordinate development sprints, and
+                        collaborate with design, art, and QA. This page focuses only on my individual contributions.
+                    </p>
 
-    <section>
-      <div class="container patched-layout">
-        <aside class="project-sidebar" aria-label="Page navigation">
-          <h3>System Breakdown</h3>
-          <a href="#overview">Overview</a>
-          <a href="#architecture">Architecture</a>
-          <a href="#runtime-state">Runtime State</a>
-          <a href="#timers">Player Timers</a>
-          <a href="#ui">UI Synchronization</a>
-          <a href="#authority">Authority Checks</a>
-          <a href="#demo">Personal Demo</a>
-          <a href="#learned">What I Learned</a>
-        </aside>
+                    <div class="tags hero-tags">
+                        <span class="tag">Unreal Engine 5</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Blueprints</span>
+                        <span class="tag">Server Authority</span>
+                        <span class="tag">Runtime State</span>
+                        <span class="tag">UMG</span>
+                        <span class="tag">Mission Systems</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">Development Lead</span>
+                    </div>
 
-        <div class="patched-content">
-          <section class="content-section inner-section" id="architecture">
-            <div class="section-heading">
-              <h2>System Architecture</h2>
-              <p>A compact separation between static data, live state, server decisions, and presentation.</p>
+                    <div class="hero-actions">
+                        <a class="button" href="#runtime-state">View Breakdown</a>
+                        <a class="button secondary" href="index.html#projects">Back to Projects</a>
+                    </div>
+                </div>
+
+                <aside class="profile-card">
+                    <div class="detail-card">
+                        <h3>My Main Contributions</h3>
+                        <ul>
+                            <li>Data-driven mission architecture</li>
+                            <li>Player-specific runtime state and timers</li>
+                            <li>Package and warehouse gameplay systems</li>
+                            <li>Gameplay-to-UI integration and debugging</li>
+                            <li>Code reviews, standups, and sprint coordination</li>
+                        </ul>
+                    </div>
+                </aside>
             </div>
+        </section>
 
-            <div class="detail-grid">
-              <article class="detail-card">
-                <h3>Definition Data</h3>
-                <p>
-                  Designer-authored data describes an objective's name, duration, requirements, and reward.
-                  It is treated as a reusable definition rather than modified during play.
-                </p>
-              </article>
+        <section>
+            <div class="container patched-layout">
+                <aside class="project-sidebar" aria-label="Page navigation">
+                    <h3>Project Breakdown</h3>
+                    <a href="#overview">Overview</a>
+                    <a href="#contribution">My Role</a>
+                    <a href="#architecture">Mission Architecture</a>
+                    <a href="#runtime-state">Runtime State</a>
+                    <a href="#timers">Player Timers</a>
+                    <a href="#ui">UI Synchronization</a>
+                    <a href="#packages">Package Systems</a>
+                    <a href="#authority">Authority Checks</a>
+                    <a href="#demo">Gameplay Demonstrations</a>
+                    <a href="#leadership">Leadership & Debugging</a>
+                    <a href="#learned">What I Learned</a>
+                </aside>
 
-              <article class="detail-card">
-                <h3>Runtime Instance</h3>
-                <p>
-                  Starting an objective creates a unique runtime record containing its owner, progress,
-                  status, identifier, and timing data.
-                </p>
-              </article>
+                <div class="patched-content">
+                    <section class="content-section inner-section" id="contribution">
+                        <div class="section-heading">
+                            <h2>Development Lead & Gameplay Programmer</h2>
+                        </div>
+                        <div class="detail-card">
+                            <p>
+                                My work combines hands-on gameplay programming with team coordination. I develop and refine
+                                UE5 systems in C++ and Blueprints, help diagnose integration issues, review teammates' code,
+                                host standups, and organize short development sprints around production priorities.
+                            </p>
+                            <p>
+                                My primary technical focus has been the connection between missions, packages, player state,
+                                vehicles, and user interface feedback. These features must work together while keeping live
+                                state independent for each player.
+                            </p>
+                        </div>
+                    </section>
 
-              <article class="detail-card">
-                <h3>Authoritative Manager</h3>
-                <p>
-                  A server-side manager validates requests and changes runtime state. Clients display the
-                  resulting state but do not decide whether an objective succeeds or fails.
-                </p>
-              </article>
+                    <section class="content-section inner-section" id="architecture">
+                        <div class="section-heading">
+                            <h2>System Architecture</h2>
+                            <p>Separating reusable mission definitions from player-owned runtime instances.</p>
+                        </div>
 
-              <article class="detail-card">
-                <h3>Player UI</h3>
-                <p>
-                  The interface receives state updates for the local player and displays progress and time
-                  remaining without maintaining a second version of the gameplay rules.
-                </p>
-              </article>
-            </div>
-          </section>
+                        <div class="detail-grid">
+                            <article class="detail-card">
+                                <h3>Definition Data</h3>
+                                <p>
+                                    Designer-authored Data Assets describe a mission's name, duration, requirements, and reward.
+                                    It is treated as a reusable definition rather than modified during play.
+                                </p>
+                            </article>
 
-          <section class="content-section inner-section" id="runtime-state">
-            <div class="section-heading">
-              <h2>Player-Specific Runtime State</h2>
-              <p>
-                This independently written example demonstrates how one reusable definition can produce
-                separate live instances for different players.
-              </p>
-            </div>
+                            <article class="detail-card">
+                                <h3>Runtime Instance</h3>
+                                <p>
+                                    Starting a mission creates a unique runtime record containing its owner, progress,
+                                    status, identifier, and timing data.
+                                </p>
+                            </article>
 
-            <div class="script-card">
-              <div class="script-header">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                <strong>PortfolioObjectiveTypes.h — recreated example</strong>
-              </div>
-              <div class="script-body">
-                <h3>Purpose</h3>
-                <p>
-                  Store only the information that changes while an objective is active. A definition key
-                  identifies the reusable design data, while a unique instance ID identifies this particular run.
-                </p>
+                            <article class="detail-card">
+                                <h3>Authoritative Manager</h3>
+                                <p>
+                                    The Mission Manager validates requests and changes runtime state. Clients display the
+                                    resulting state but do not decide whether a mission succeeds or fails.
+                                </p>
+                            </article>
+
+                            <article class="detail-card">
+                                <h3>Player UI</h3>
+                                <p>
+                                    The interface receives state updates for the local player and displays progress and time
+                                    remaining without maintaining a second version of the gameplay rules.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="content-section inner-section" id="runtime-state">
+                        <div class="section-heading">
+                            <h2>Player-Specific Runtime State</h2>
+                            <p>
+                                One reusable mission definition can produce separate live instances for different players.
+                            </p>
+                        </div>
+
+                        <div class="script-card">
+                            <div class="script-header">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                <strong>Runtime mission state — illustrative placeholder</strong>
+                            </div>
+                            <div class="script-body">
+                                <h3>Purpose</h3>
+                                <p>
+                                    Store only the information that changes while a mission is active. A definition key
+                                    identifies the reusable design data, while a unique instance ID identifies this particular run.
+                                    This temporary example will be replaced with an approved excerpt from the production code.
+                                </p>
 <pre><code>enum class EObjectiveStatus : uint8
 {
     Active,
@@ -159,25 +183,26 @@ struct FObjectiveRuntimeState
     int32 RequiredProgress = 0;
     double EndTimeSeconds = 0.0;
 };</code></pre>
-              </div>
-            </div>
-          </section>
+                            </div>
+                        </div>
+                    </section>
 
-          <section class="content-section inner-section" id="timers">
-            <div class="section-heading">
-              <h2>Independent Player Timers</h2>
-              <p>
-                Each runtime instance stores an authoritative end time. This prevents two players who begin
-                at different moments from accidentally sharing the same countdown.
-              </p>
-            </div>
+                    <section class="content-section inner-section" id="timers">
+                        <div class="section-heading">
+                            <h2>Independent Player Timers</h2>
+                            <p>Each runtime instance has independent timing state so players can begin at different moments.</p>
+                        </div>
 
-            <div class="script-card">
-              <div class="script-header">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                <strong>PortfolioObjectiveManager.cpp — recreated example</strong>
-              </div>
-              <div class="script-body">
+                        <div class="script-card">
+                            <div class="script-header">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                <strong>Starting a timed runtime instance — illustrative placeholder</strong>
+                            </div>
+                            <div class="script-body">
+                                <p>
+                                    This temporary example demonstrates the concept and will be replaced with a short,
+                                    approved production excerpt.
+                                </p>
 <pre><code>bool APortfolioObjectiveManager::StartObjective(
     APlayerState* Player,
     FName DefinitionKey,
@@ -200,122 +225,188 @@ struct FObjectiveRuntimeState
     return true;
 }</code></pre>
 
-                <h3>Why an end time?</h3>
-                <p>
-                  Clients can calculate a display value from synchronized server time. The server still owns
-                  expiration, while the UI can update smoothly without sending a replicated value every frame.
-                </p>
-              </div>
-            </div>
-          </section>
+                                <h3>Why an end time?</h3>
+                                <p>
+                                    Clients can calculate a display value from synchronized server time. The server still owns
+                                    expiration, while the UI can update smoothly without sending a replicated value every frame.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
 
-          <section class="content-section inner-section" id="ui">
-            <div class="section-heading">
-              <h2>UI Synchronization</h2>
-              <p>The widget presents authoritative state instead of running a separate gameplay timer.</p>
-            </div>
+                    <section class="content-section inner-section" id="packages">
+                        <div class="section-heading">
+                            <h2>Package & Warehouse Systems</h2>
+                            <p>Connecting reusable world objects to mission requirements and inventory interactions.</p>
+                        </div>
+                        <div class="detail-grid">
+                            <article class="detail-card">
+                                <h3>Runtime Package Identity</h3>
+                                <p>
+                                    Physical packages receive unique runtime identities while retaining reusable definition
+                                    data. This supports tracking individual objects as they move between the warehouse, player,
+                                    vehicle inventory, and delivery destination.
+                                </p>
+                            </article>
+                            <article class="detail-card">
+                                <h3>Mission Evaluation</h3>
+                                <p>
+                                    Missions evaluate delivered package characteristics against their requirements instead of
+                                    relying on a single hard-coded object, allowing the same world systems to support multiple jobs.
+                                </p>
+                            </article>
+                            <article class="detail-card wide-card">
+                                <h3>Reusable Spawning</h3>
+                                <p>
+                                    I worked on distributing package variations through warehouse spawn locations and reusing
+                                    actors through pooling. Spawn reservations help avoid multiple packages occupying the same space.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
 
-            <div class="detail-card">
-              <h3>Display Flow</h3>
-              <ul>
-                <li>The local player receives the relevant runtime state.</li>
-                <li>The widget calculates time remaining from the replicated end time.</li>
-                <li>Progress events update the displayed count.</li>
-                <li>A terminal status hides the active display and shows the appropriate feedback.</li>
-                <li>The server remains responsible for completion and failure decisions.</li>
-              </ul>
-            </div>
-          </section>
+                    <section class="content-section inner-section" id="ui">
+                        <div class="section-heading">
+                            <h2>UI Synchronization</h2>
+                            <p>The widget presents authoritative state instead of running a separate gameplay timer.</p>
+                        </div>
 
-          <section class="content-section inner-section" id="authority">
-            <div class="section-heading">
-              <h2>Authority and Validation</h2>
-            </div>
+                        <div class="detail-card">
+                            <h3>Display Flow</h3>
+                            <ul>
+                                <li>The local player receives the relevant runtime state.</li>
+                                <li>The widget calculates time remaining from the replicated end time.</li>
+                                <li>Progress events update the displayed count.</li>
+                                <li>A terminal status hides the active display and shows the appropriate feedback.</li>
+                                <li>The server remains responsible for completion and failure decisions.</li>
+                            </ul>
+                        </div>
+                    </section>
 
-            <div class="skills-grid">
-              <div class="skill-box">
-                <h3>Server Responsibilities</h3>
-                <ul>
-                  <li>Create runtime instances</li>
-                  <li>Validate ownership</li>
-                  <li>Accept progress</li>
-                  <li>Resolve expiration</li>
-                </ul>
-              </div>
-              <div class="skill-box">
-                <h3>Client Responsibilities</h3>
-                <ul>
-                  <li>Send requests</li>
-                  <li>Display local state</li>
-                  <li>Animate feedback</li>
-                  <li>Never decide success</li>
-                </ul>
-              </div>
-            </div>
-          </section>
+                    <section class="content-section inner-section" id="authority">
+                        <div class="section-heading">
+                            <h2>Authority and Validation</h2>
+                        </div>
 
-          <section class="content-section inner-section" id="demo">
-            <div class="section-heading">
-              <h2>Personal Recreation Demo</h2>
-              <p>
-                Replace the two placeholders below only with recordings from a new personal Unreal project.
-                Do not use footage, UI, levels, names, assets, or code from the company project.
-              </p>
-            </div>
+                        <div class="skills-grid">
+                            <div class="skill-box">
+                                <h3>Server Responsibilities</h3>
+                                <ul>
+                                    <li>Create runtime instances</li>
+                                    <li>Validate ownership</li>
+                                    <li>Accept progress</li>
+                                    <li>Resolve expiration</li>
+                                </ul>
+                            </div>
+                            <div class="skill-box">
+                                <h3>Client Responsibilities</h3>
+                                <ul>
+                                    <li>Send requests</li>
+                                    <li>Display local state</li>
+                                    <li>Animate feedback</li>
+                                    <li>Never decide success</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
 
-            <div class="detail-grid">
-              <figure class="gallery-card">
-                <div class="detail-card">
-                  <h3>Demo GIF 1</h3>
-                  <p>Two test players start the same sample objective at different times and display independent countdowns.</p>
-                  <p><strong>Suggested file:</strong> Images/personal-objective-timers.gif</p>
+                    <section class="content-section inner-section" id="demo">
+                        <div class="section-heading">
+                            <h2>Gameplay Demonstrations</h2>
+                            <p>
+                                Approved project GIFs can be placed here to show the systems working in context. Each clip
+                                should focus on one contribution and include a caption explaining my responsibility.
+                            </p>
+                        </div>
+
+                        <div class="detail-grid">
+                            <figure class="gallery-card">
+                                <div class="detail-card">
+                                    <h3>Demo GIF 1</h3>
+                                    <p>Two players begin missions at different moments and display independent countdowns.</p>
+                                    <p><strong>Suggested file:</strong> Images/dsi-independent-mission-timers.gif</p>
+                                </div>
+                                <figcaption>Independent runtime instances and timers</figcaption>
+                            </figure>
+
+                            <figure class="gallery-card">
+                                <div class="detail-card">
+                                    <h3>Demo GIF 2</h3>
+                                    <p>A package interaction updates the owning player's mission progress and UI.</p>
+                                    <p><strong>Suggested file:</strong> Images/dsi-mission-package-progress.gif</p>
+                                </div>
+                                <figcaption>Player-specific progress and UI feedback</figcaption>
+                            </figure>
+                        </div>
+
+                        <!-- After adding an approved project GIF, replace a placeholder with:
+                        <div class="media-card">
+                          <img class="large-media-image"
+                               src="Images/dsi-independent-mission-timers.gif"
+                               alt="Two players running independent mission timers" />
+                        </div>
+                        -->
+                    </section>
+
+                    <section class="content-section inner-section" id="leadership">
+                        <div class="section-heading">
+                            <h2>Leadership, Collaboration & Debugging</h2>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-box">
+                                <h3>Team Workflow</h3>
+                                <ul>
+                                    <li>Host development standups</li>
+                                    <li>Organize week-long sprints</li>
+                                    <li>Track blockers and priorities</li>
+                                    <li>Collaborate across disciplines</li>
+                                </ul>
+                            </div>
+                            <div class="skill-box">
+                                <h3>Code Workflow</h3>
+                                <ul>
+                                    <li>Use GitHub version control</li>
+                                    <li>Review gameplay code</li>
+                                    <li>Diagnose integration bugs</li>
+                                    <li>Test multiplayer behavior</li>
+                                </ul>
+                            </div>
+                            <div class="skill-box">
+                                <h3>Iteration</h3>
+                                <ul>
+                                    <li>Translate feedback into tasks</li>
+                                    <li>Add targeted debug logging</li>
+                                    <li>Reproduce client/server issues</li>
+                                    <li>Refine connected systems</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-section inner-section" id="learned">
+                        <div class="section-heading">
+                            <h2>What I Learned</h2>
+                        </div>
+                        <div class="detail-card">
+                            <ul>
+                                <li>Runtime instances need unique identities separate from reusable definition data.</li>
+                                <li>Player ownership should be explicit in multiplayer gameplay state.</li>
+                                <li>Gameplay timers and UI timers should not compete as separate sources of truth.</li>
+                                <li>Server time allows responsive countdown displays without replicating every tick.</li>
+                                <li>Small, focused systems are easier to test than tightly coupled manager and widget logic.</li>
+                            </ul>
+                        </div>
+                    </section>
                 </div>
-                <figcaption>Independent runtime instances and timers</figcaption>
-              </figure>
+            </div>
+        </section>
+    </main>
 
-              <figure class="gallery-card">
-                <div class="detail-card">
-                  <h3>Demo GIF 2</h3>
-                  <p>A server-authoritative progress event updates only the owning player's test widget.</p>
-                  <p><strong>Suggested file:</strong> Images/personal-objective-progress.gif</p>
-                </div>
-                <figcaption>Player-specific progress and UI feedback</figcaption>
-              </figure>
-            </div>
-
-            <!-- After recording an independent personal demo, replace a placeholder with:
-            <div class="media-card">
-              <img class="large-media-image"
-                   src="Images/personal-objective-timers.gif"
-                   alt="Two test players running independent objective timers" />
-            </div>
-            -->
-          </section>
-
-          <section class="content-section inner-section" id="learned">
-            <div class="section-heading">
-              <h2>What I Learned</h2>
-            </div>
-            <div class="detail-card">
-              <ul>
-                <li>Runtime instances need unique identities separate from reusable definition data.</li>
-                <li>Player ownership should be explicit in multiplayer gameplay state.</li>
-                <li>Gameplay timers and UI timers should not compete as separate sources of truth.</li>
-                <li>Server time allows responsive countdown displays without replicating every tick.</li>
-                <li>Small, focused systems are easier to test than tightly coupled manager and widget logic.</li>
-              </ul>
-            </div>
-          </section>
+    <footer>
+        <div class="container footer-content">
+            <p>© 2026 Miguel Pineda. All rights reserved.</p>
+            <a href="index.html#projects">Back to Projects</a>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-content">
-      <p>© 2026 Miguel Pineda. All rights reserved.</p>
-      <a href="index.html#projects">Back to Projects</a>
-    </div>
-  </footer>
+    </footer>
 </body>
 </html>
