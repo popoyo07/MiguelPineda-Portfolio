@@ -281,6 +281,31 @@ struct FObjectiveRuntimeState
                                 <li>The server remains responsible for completion and failure decisions.</li>
                             </ul>
                         </div>
+
+                        <div class="media-card spaced-media">
+                            <iframe
+                                src="https://www.youtube.com/embed/5WmibBpZME0"
+                                title="Multiplayer mission timer synchronization demonstration"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                            </div>
+
+                            <div class="detail-card">
+                            <h3>Player-Specific Timer Demonstration</h3>
+                            <p>
+                                This demonstration shows two players starting missions at different times.
+                                Each player receives an independent countdown connected to their own runtime
+                                mission instance, preventing one player's timer from overwriting or resetting
+                                the other player's display.
+                            </p>
+                            <p>
+                                The Mission Manager maintains the authoritative timing state, while each
+                                player's UI retrieves and displays the time associated with their active
+                                mission. Mission expiration and failure are determined by gameplay logic
+                                rather than by the widget.
+                            </p>
+                        </div>
                     </section>
 
                     <section class="content-section inner-section" id="authority">
