@@ -24,14 +24,17 @@
         <section class="hero project-detail-hero" id="overview">
             <div class="container hero-grid">
                 <div>
-                    <span class="eyebrow">Digital Scorpion Interactive · Unreal Engine 5 · C++ · Blueprints</span>
+                    <span class="eyebrow"> 
+                        <a href="https://digitalscorpioninteractive.com/" target="_blank" rel="noopener noreferrer">Digital Scorpion Interactive</a>
+                         · Unreal Engine 5 · C++ · Blueprints</span>
                     <h1>Unannounced DSI Project</h1>
                     <p>
                         This unannounced cooperative delivery game is being developed in Unreal Engine 5. Its core
                         experience centers on accepting jobs, handling cargo, and completing deliveries with a vehicle.
                     </p>
                     <p>
-                        As Development Lead at Digital Scorpion Interactive, I implement gameplay systems in C++ and
+                        <a href="https://digitalscorpioninteractive.com/" target="_blank" rel="noopener noreferrer">Digital Scorpion Interactive</a>,
+                        I implement gameplay systems in C++ and
                         Blueprints, debug interconnected features, review code, coordinate development sprints, and
                         collaborate with design, art, and QA. This page focuses only on my individual contributions.
                     </p>
@@ -55,16 +58,13 @@
                 </div>
 
                 <aside class="profile-card">
-                    <div class="detail-card">
-                        <h3>My Main Contributions</h3>
-                        <ul>
-                            <li>Data-driven mission architecture</li>
-                            <li>Player-specific runtime state and timers</li>
-                            <li>Package and warehouse gameplay systems</li>
-                            <li>Gameplay-to-UI integration and debugging</li>
-                            <li>Code reviews, standups, and sprint coordination</li>
-                        </ul>
-                    </div>
+                           
+                <div class="project-cover">
+                     <a href="https://digitalscorpioninteractive.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit the Digital Scorpion Interactive website">
+                    <img src="Images/DSILogo.jpg" alt="DSI Logo image" />
+                    </a>
+                </div>
+       
                 </aside>
             </div>
         </section>
@@ -86,6 +86,9 @@
                     <a href="#learned">What I Learned</a>
                 </aside>
 
+                 
+                    
+                    
                 <div class="patched-content">
                     <section class="content-section inner-section" id="contribution">
                         <div class="section-heading">
@@ -95,13 +98,23 @@
                             <p>
                                 My work combines hands-on gameplay programming with team coordination. I develop and refine
                                 UE5 systems in C++ and Blueprints, help diagnose integration issues, review teammates' code,
-                                host standups, and organize short development sprints around production priorities.
+                                host standups, and organize short development sprints around production priorities. <br><br>
                             </p>
                             <p>
                                 My primary technical focus has been the connection between missions, packages, player state,
                                 vehicles, and user interface feedback. These features must work together while keeping live
                                 state independent for each player.
+                                <br>
                             </p>
+                        <aside class="profile-card">
+                                <ul>
+                                <li>Data-driven mission architecture</li>
+                                <li>Player-specific runtime state and timers</li>
+                                <li>Package and warehouse gameplay systems</li>
+                                <li>Gameplay-to-UI integration and debugging</li>
+                                <li>Code reviews, standups, and sprint coordination</li>
+                            </ul>
+                        </aside>
                         </div>
                     </section>
 
@@ -157,32 +170,53 @@
                         <div class="script-card">
                             <div class="script-header">
                                 <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                                <strong>Runtime mission state — illustrative placeholder</strong>
+                                <strong>MissionManager.h — Runtime Mission State</strong>
                             </div>
                             <div class="script-body">
                                 <h3>Purpose</h3>
                                 <p>
-                                    Store only the information that changes while a mission is active. A definition key
-                                    identifies the reusable design data, while a unique instance ID identifies this particular run.
-                                    This temporary example will be replaced with an approved excerpt from the production code.
+                                    Each active mission is represented by an independent runtime instance. 
+                                    DefinitionId identifies the reusable Data Asset definition, while InstanceId uniquely identifies a particular player’s active mission.
+                                    The runtime state tracks ownership, requirements, status, modifiers, and timing information.
                                 </p>
-<pre><code>enum class EObjectiveStatus : uint8
+                                <p><em>Production excerpt shortened for presentation.</em></p>
+<pre><code>
+enum class EMissionRuntimeStatus : uint8
 {
     Active,
+    Paused,
     Completed,
+    Cancelled,
     Failed
 };
 
-struct FObjectiveRuntimeState
+struct FMissionRequirement
 {
+    FMissionPackageOption PackageTypeReq;
+    int32 RequiredCount = 0;
+    int32 DeliveredCount = 0;
+};
+
+struct FMissionRuntimeState
+{
+    TWeakObjectPtr&lt;APlayerState&gt; OwningPlayerState;
+    TWeakObjectPtr&lt;ADeliveryDestination&gt; RequiredDestination;
+
     FGuid InstanceId;
-    FName DefinitionKey;
-    TWeakObjectPtr&lt;APlayerState&gt; Owner;
-    EObjectiveStatus Status = EObjectiveStatus::Active;
-    int32 CurrentProgress = 0;
-    int32 RequiredProgress = 0;
-    double EndTimeSeconds = 0.0;
-};</code></pre>
+    FName DefinitionId;
+    EMissionRuntimeStatus Status = EMissionRuntimeStatus::Active;
+
+    int32 RewardValue = 0;
+    TArray&lt;FMissionRequirement&gt; Requirements;
+
+    bool bFailOnDestroyed = false;
+    bool bIsTimed = false;
+    float TimeLimit = 0.0f;
+
+    FTimerHandle MissionTimerHandle;
+    float EndServerTime = 0.0f;
+};
+</code></pre>
                             </div>
                         </div>
                     </section>
@@ -196,40 +230,75 @@ struct FObjectiveRuntimeState
                         <div class="script-card">
                             <div class="script-header">
                                 <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                                <strong>Starting a timed runtime instance — illustrative placeholder</strong>
+                                <strong>MissionManager.cpp — Creating a Player-Owned Mission</strong>
                             </div>
                             <div class="script-body">
                                 <p>
-                                    This temporary example demonstrates the concept and will be replaced with a short,
-                                    approved production excerpt.
+                                    When a player starts a mission, the server creates a unique runtime instance from designer-authored mission data. 
+                                    Modifiers and package requirements are copied into live state, and the resulting instance is associated with the owning PlayerState.
                                 </p>
-<pre><code>bool APortfolioObjectiveManager::StartObjective(
-    APlayerState* Player,
-    FName DefinitionKey,
-    float DurationSeconds)
+<pre><code>
+FMissionRuntimeState RuntimeMission;
+RuntimeMission.InstanceId = FGuid::NewGuid();
+RuntimeMission.DefinitionId = DefinitionId;
+RuntimeMission.OwningPlayerState = OwningPlayerState;
+
+if (MissionDefinition)
 {
-    if (!HasAuthority() || !IsValid(Player))
+    if (const FMissionModifier* Modifier = MissionDefinition->FindModifier(EMissionModifier::MissionTimed))
     {
-        return false;
+        RuntimeMission.bIsTimed = true;
+        RuntimeMission.TimeLimit = FMath::Max(0.0f, Modifier->Value);
     }
 
-    FObjectiveRuntimeState NewState;
-    NewState.InstanceId = FGuid::NewGuid();
-    NewState.DefinitionKey = DefinitionKey;
-    NewState.Owner = Player;
-    NewState.EndTimeSeconds =
-        GetWorld()-&gt;GetGameState()-&gt;GetServerWorldTimeSeconds()
-        + DurationSeconds;
+    for (const FMissionPackageOption& Option :
+         MissionDefinition->PackageOptions)
+    {
+        FMissionRequirement& NewRequirement = RuntimeMission.Requirements.AddDefaulted_GetRef();
 
-    ActiveObjectives.Add(NewState.InstanceId, MoveTemp(NewState));
-    return true;
-}</code></pre>
+        NewRequirement.PackageTypeReq = Option;
+        NewRequirement.RequiredCount = Option.PackageCount;
+        NewRequirement.DeliveredCount = 0;
+    }
 
-                                <h3>Why an end time?</h3>
+    RuntimeMission.bFailOnDestroyed =
+        MissionDefinition->HasModifier(EMissionModifier::FailOnVehicleDestroyed);
+}
+
+const FGuid MissionInstanceId = RuntimeMission.InstanceId;
+
+RuntimeMissions.Add(MissionInstanceId, MoveTemp(RuntimeMission));
+
+FPlayerActiveMission& PlayerMissions = PlayerActiveMissions.FindOrAdd(OwningPlayerState);
+
+PlayerMissions.MissionInstanceIDs.AddUnique(MissionInstanceId);
+</code></pre>
+
+                                <h3>Independent Timer Setup</h3>
                                 <p>
-                                    Clients can calculate a display value from synchronized server time. The server still owns
-                                    expiration, while the UI can update smoothly without sending a replicated value every frame.
+                                    Each timed mission owns a separate timer handle. The bound delegate includes the unique
+                                    mission instance ID, ensuring expiration affects the correct player-owned mission.
                                 </p>
+<pre><code>FMissionRuntimeState* StartedMission =
+    RuntimeMissions.Find(MissionInstanceId);
+
+if (StartedMission &amp;&amp;
+    StartedMission-&gt;bIsTimed &amp;&amp;
+    StartedMission-&gt;TimeLimit &gt; 0.0f)
+{
+    StartedMission-&gt;EndServerTime =
+        GetWorld()-&gt;GetGameState()-&gt;GetServerWorldTimeSeconds() + StartedMission-&gt;TimeLimit;
+
+    FTimerDelegate TimeoutDelegate;
+    TimeoutDelegate.BindUObject(this ,&amp;AMissionManager::HandleMissionTimerExpired, MissionInstanceId);
+
+    GetWorldTimerManager().SetTimer(StartedMission-&gt;MissionTimerHandle, TimeoutDelegate, StartedMission-&gt;TimeLimit, false);
+}</code></pre>
+                                <p>
+                                    The synchronized server end time gives the owning player's UI a stable countdown value,
+                                    while mission expiration remains controlled by the server-side Mission Manager.
+                                </p>
+                                <p><em>Production excerpts shortened for readability; validation and debug output omitted.</em></p>
                             </div>
                         </div>
                     </section>
@@ -262,6 +331,122 @@ struct FObjectiveRuntimeState
                                     actors through pooling. Spawn reservations help avoid multiple packages occupying the same space.
                                 </p>
                             </article>
+                        </div>
+
+                        <div class="script-card spaced-media">
+                            <div class="script-header">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                <strong>MissionManager.cpp — Evaluating Delivered Packages</strong>
+                            </div>
+                            <div class="script-body">
+                                <h3>Requirement Matching</h3>
+                                <p>
+                                    Delivered package data is checked against the first compatible incomplete requirement.
+                                    The mission completes only after every required category reaches its target quantity.
+                                </p>
+<pre><code>bool AMissionManager::DoesPackageMatchRequirement(
+    const UPackageData* PackageData,
+    const FMissionPackageOption&amp; Requirement) const
+{
+    if (!IsValid(PackageData))
+    {
+        return false;
+    }
+
+    if (Requirement.RequirementType == EPackageRequirementType::Anything)
+    {
+        return true;
+    }
+
+    return PackageData-&gt;PackageShape == Requirement.PackageShape &amp;&amp;
+           PackageData-&gt;PackageAttribute == Requirement.PackageAttribute;
+}
+
+bool AMissionManager::ApplyPackageDataToMission(
+    FMissionRuntimeState&amp; RuntimeMission,
+    const UPackageData* PackageData)
+{
+    for (FMissionRequirement&amp; Progress : RuntimeMission.Requirements)
+    {
+        if (Progress.DeliveredCount &gt;= Progress.RequiredCount)
+        {
+            continue;
+        }
+
+        if (!DoesPackageMatchRequirement(PackageData, Progress.PackageTypeReq))
+        {
+            continue;
+        }
+
+        ++Progress.DeliveredCount;
+
+        if (AreAllRequirementsComplete(RuntimeMission))
+        {
+            CompleteMission(RuntimeMission);
+        }
+
+        return true;
+    }
+
+    return false;
+}</code></pre>
+                                <p><em>Production excerpt shortened for readability; debug logging omitted.</em></p>
+                            </div>
+                        </div>
+
+                        <div class="script-card spaced-media">
+                            <div class="script-header">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                <strong>Warehouse.cpp — Creating Runtime Package Data</strong>
+                            </div>
+                            <div class="script-body">
+                                <h3>Definition Data vs. Runtime Identity</h3>
+                                <p>
+                                    The warehouse duplicates reusable package definition data for each physical actor.
+                                    Every package receives its own inventory identity without modifying the original Data Asset.
+                                </p>
+<pre><code>UPackageData* AWarehouse::BuildRuntimePackageData(
+    APackageActor* Package) const
+{
+    if (!IsValid(Package))
+    {
+        return nullptr;
+    }
+
+    const UPackageData* SelectedDefinition = SelectPackageDefinition();
+
+    if (!IsValid(SelectedDefinition))
+    {
+        SelectedDefinition = Package-&gt;PackageData;
+    }
+
+    if (!IsValid(SelectedDefinition))
+    {
+        return nullptr;
+    }
+
+    UPackageData* RuntimeData =
+        DuplicateObject&lt;UPackageData&gt;(SelectedDefinition, Package);
+
+    if (!RuntimeData)
+    {
+        return nullptr;
+    }
+
+    RuntimeData-&gt;PackageID = FInventoryItemID(FGuid::NewGuid());
+
+    RuntimeData-&gt;MissionInstanceId.Invalidate();
+    RuntimeData-&gt;AssignedDestinationName = NAME_None;
+
+    if (RuntimeData-&gt;PackageGridCoords.IsEmpty())
+    {
+        RuntimeData-&gt;PackageGridCoords.Add(FGridCoord());
+    }
+
+    return RuntimeData;
+}</code></pre>
+                                <p><em>Production excerpt shortened for readability; diagnostic logging omitted.</em></p>
+                            </div>
                         </div>
                     </section>
 
@@ -338,39 +523,25 @@ struct FObjectiveRuntimeState
                     <section class="content-section inner-section" id="demo">
                         <div class="section-heading">
                             <h2>Gameplay Demonstrations</h2>
+                         
+                        </div>
+
+                        <div class="media-card spaced-media">
+                            <iframe
+                                src="https://www.youtube.com/embed/mlY8HrmOaLw"
+                                title="Multiplayer mission full delivery play"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="detail-card">
+                            <h3>Mission and Delivery Demonstration</h3>
                             <p>
-                                Approved project GIFs can be placed here to show the systems working in context. Each clip
-                                should focus on one contribution and include a caption explaining my responsibility.
+                                This demonstration follows the mission flow from accepting a job through handling
+                                the required packages and completing the delivery. My contributions shown here include
+                                runtime mission logic, package requirement tracking, timer behavior, and gameplay-to-UI communication.
                             </p>
                         </div>
-
-                        <div class="detail-grid">
-                            <figure class="gallery-card">
-                                <div class="detail-card">
-                                    <h3>Demo GIF 1</h3>
-                                    <p>Two players begin missions at different moments and display independent countdowns.</p>
-                                    <p><strong>Suggested file:</strong> Images/dsi-independent-mission-timers.gif</p>
-                                </div>
-                                <figcaption>Independent runtime instances and timers</figcaption>
-                            </figure>
-
-                            <figure class="gallery-card">
-                                <div class="detail-card">
-                                    <h3>Demo GIF 2</h3>
-                                    <p>A package interaction updates the owning player's mission progress and UI.</p>
-                                    <p><strong>Suggested file:</strong> Images/dsi-mission-package-progress.gif</p>
-                                </div>
-                                <figcaption>Player-specific progress and UI feedback</figcaption>
-                            </figure>
-                        </div>
-
-                        <!-- After adding an approved project GIF, replace a placeholder with:
-                        <div class="media-card">
-                          <img class="large-media-image"
-                               src="Images/dsi-independent-mission-timers.gif"
-                               alt="Two players running independent mission timers" />
-                        </div>
-                        -->
                     </section>
 
                     <section class="content-section inner-section" id="leadership">
